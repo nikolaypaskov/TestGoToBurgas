@@ -53,7 +53,7 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 3. Featured Events — bento grid */}
+      {/* 3. Featured Events — editorial magazine grid */}
       <section className="py-16 sm:py-24 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
@@ -76,7 +76,6 @@ export default async function HomePage({ params }: Props) {
 
       {/* 6. AI Assistant — full-width dark section with phone mockup */}
       <section className="relative py-16 sm:py-24 bg-gradient-to-br from-surface-dark via-[#0E3555] to-primary-dark overflow-hidden">
-        {/* Decorative blurs */}
         <div className="absolute top-0 right-0 w-[350px] h-[350px] rounded-full bg-secondary/8 blur-[120px]" />
         <div className="absolute bottom-0 left-1/4 w-[250px] h-[250px] rounded-full bg-teal/8 blur-[100px]" />
         <ScrollReveal>
@@ -84,7 +83,7 @@ export default async function HomePage({ params }: Props) {
         </ScrollReveal>
       </section>
 
-      {/* 7. Deals — ocean blue background, horizontal cinema scroll */}
+      {/* 7. Deals — ocean blue background with featured spotlight */}
       <section className="py-16 sm:py-24 bg-primary overflow-hidden">
         <ScrollReveal>
           <DealsHighlight deals={featuredDeals} locale={typedLocale} dict={dict} />
@@ -98,17 +97,15 @@ export default async function HomePage({ params }: Props) {
         </ScrollReveal>
       </section>
 
-      {/* 9. About — full-bleed photo background */}
+      {/* 9. About — full-bleed photo background with stats */}
       <ScrollReveal>
         <AboutSection locale={typedLocale} dict={dict} />
       </ScrollReveal>
 
-      {/* 10. Newsletter — warm gradient strip */}
-      <section className="py-12 bg-gradient-to-r from-secondary to-accent">
-        <ScrollReveal>
-          <NewsletterCTA locale={typedLocale} dict={dict} />
-        </ScrollReveal>
-      </section>
+      {/* 10. Newsletter — photo background with email form */}
+      <ScrollReveal>
+        <NewsletterCTA locale={typedLocale} dict={dict} />
+      </ScrollReveal>
     </>
   );
 }
