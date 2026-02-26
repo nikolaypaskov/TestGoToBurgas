@@ -39,8 +39,8 @@
     "emailPlaceholder": "Your email address"
   },
   "events": {
-    "title": "Events",
-    "description": "Concerts, theater, sports, exhibitions and other events in Burgas",
+    "title": "What's On in Burgas",
+    "description": "From open-air opera under the stars to beach festivals, sand art, and world-class sport — the Black Sea's most exciting cultural calendar",
     "allEvents": "All Events",
     "upcoming": "Upcoming",
     "noEvents": "No events found in this category",
@@ -49,7 +49,18 @@
     "price": "Price",
     "free": "Free",
     "buyTickets": "Buy tickets",
-    "moreInfo": "More info"
+    "moreInfo": "More info",
+    "featuredTitle": "Don't Miss This Summer",
+    "featuredSubtitle": "Hand-picked highlights from the season's most anticipated events",
+    "browseCategoriesTitle": "Browse by Category",
+    "allEventsTitle": "Full Event Calendar",
+    "allEventsSubtitle": "Every concert, show, festival, and gathering happening in Burgas",
+    "ctaExplore": "Explore the City",
+    "ctaExploreDesc": "Discover landmarks, beaches, and hidden gems between events",
+    "ctaPlan": "Plan Your Stay",
+    "ctaPlanDesc": "Find the perfect hotel and restaurant for your Burgas trip",
+    "ctaDeals": "Grab a Deal",
+    "ctaDealsDesc": "Special packages and discounts for visitors"
   },
   "explore": {
     "title": "Explore Burgas",
@@ -100,15 +111,32 @@
     "ctaDealsDesc": "Special offers and packages to make your trip even better"
   },
   "deals": {
-    "title": "Deals",
-    "description": "Promotional packages, discounts and special offers in Burgas",
+    "title": "Deals & Packages",
+    "description": "Handpicked travel packages, exclusive discounts, and seasonal offers to make your Burgas getaway unforgettable — and more affordable",
     "allDeals": "All Deals",
     "noDeals": "No deals available at the moment",
     "validUntil": "Valid until",
     "originalPrice": "Regular price",
     "discountPrice": "Sale price",
     "savings": "You save",
-    "getOffer": "Get this offer"
+    "getOffer": "Get this offer",
+    "featuredTitle": "Top Picks for You",
+    "featuredSubtitle": "Our editors' selection of the best value packages this season",
+    "allDealsTitle": "All Offers",
+    "allDealsSubtitle": "Browse every deal, discount, and package currently available",
+    "whyTitle": "Why Book a Package?",
+    "why1Title": "Save Up to 35%",
+    "why1Desc": "Bundled packages include accommodation, activities, and meals at a fraction of the individual price.",
+    "why2Title": "Curated Experiences",
+    "why2Desc": "Each package is handcrafted by local tourism experts who know the best hidden gems and timing.",
+    "why3Title": "Hassle-Free Planning",
+    "why3Desc": "Transfers, tickets, and reservations are all included. Just show up and enjoy your holiday.",
+    "ctaExplore": "Explore the City",
+    "ctaExploreDesc": "Discover landmarks, beaches, and cultural gems worth visiting",
+    "ctaEvents": "See What's On",
+    "ctaEventsDesc": "Concerts, festivals, and shows happening during your stay",
+    "ctaPlan": "Plan Your Trip",
+    "ctaPlanDesc": "Hotels, restaurants, and transport for your perfect getaway"
   },
   "about": {
     "title": "About Burgas",
