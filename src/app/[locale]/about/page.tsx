@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { isValidLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { PageHero } from "@/components/shared/PageHero";
-import { ScrollReveal } from "@/components/shared/ScrollReveal";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -16,102 +17,70 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+/* ── Localized Content ──────────────────────────────────── */
 const content = {
   en: {
-    intro:
-      "Burgas is the fourth largest city in Bulgaria, located on the southern Black Sea coast. With a population of approximately 210,000, it serves as the economic, cultural, and administrative center of southeastern Bulgaria.",
+    intro: "Burgas is the fourth largest city in Bulgaria, located on the southern Black Sea coast. With a population of approximately 210,000, it serves as the economic, cultural, and administrative center of southeastern Bulgaria.",
     locationTitle: "Location & Geography",
-    locationText:
-      "Situated on the westernmost point of the Bay of Burgas, the city is surrounded by three lakes \u2014 Atanasovsko, Burgas Lake (Vaya), and Mandrensko \u2014 which are home to over 250 bird species. The region enjoys a mild maritime climate with over 2,500 hours of sunshine per year, making it one of the sunniest places in Europe.",
+    locationText: "Situated on the westernmost point of the Bay of Burgas, the city is surrounded by three lakes — Atanasovsko, Burgas Lake (Vaya), and Mandrensko — which are home to over 250 bird species. The region enjoys a mild maritime climate with over 2,500 hours of sunshine per year, making it one of the sunniest places in Europe.",
     historyTitle: "History",
-    historyText:
-      "The area has been inhabited since antiquity. Ancient Thracian settlements and the Greek colony of Pyrgos lay the historical foundations of modern Burgas. Over the centuries, the city developed as a key port on the Black Sea, and today it is Bulgaria\u2019s largest port city.",
+    historyText: "The area has been inhabited since antiquity. Ancient Thracian settlements and the Greek colony of Pyrgos lay the historical foundations of modern Burgas. Over the centuries, the city developed as a key port on the Black Sea, and today it is Bulgaria's largest port city.",
     cultureTitle: "Culture & Festivals",
-    cultureText:
-      "Burgas is known as a city of festivals. Every summer, the city hosts Spirit of Burgas (international music festival), the Sand Sculpture Festival on the Central Beach, Opera Open in the Sea Garden, and numerous art and theater events. The city boasts a vibrant cultural scene with the Burgas Opera, the Adriana Budevska Drama Theater, and a rich gallery network.",
+    cultureText: "Burgas is known as a city of festivals. Every summer, the city hosts Spirit of Burgas (international music festival), the Sand Sculpture Festival on the Central Beach, Opera Open in the Sea Garden, and numerous art and theater events. The city boasts a vibrant cultural scene with the Burgas Opera, the Adriana Budevska Drama Theater, and a rich gallery network.",
     natureTitle: "Nature & Parks",
-    natureText:
-      "The Sea Garden (Morska Gradina) is a 7-kilometer park stretching along the coastline, featuring sculptures, fountains, playgrounds, and a summer theater. The Poda Protected Area, located just south of the city, is a bird sanctuary and one of the most important wetlands on the Bulgarian Black Sea coast.",
+    natureText: "The Sea Garden (Morska Gradina) is a 7-kilometer park stretching along the coastline, featuring sculptures, fountains, playgrounds, and a summer theater. The Poda Protected Area, located just south of the city, is a bird sanctuary and one of the most important wetlands on the Bulgarian Black Sea coast.",
     climateTitle: "Climate & Best Time to Visit",
-    climateText:
-      "Burgas has a mild maritime climate with warm summers (average 27-30\u00b0C in July-August) and cool winters (3-5\u00b0C in January). The sea water temperature reaches 24-26\u00b0C during the summer months. The best time for a beach vacation is June through September, while spring and autumn offer pleasant weather for cultural tourism and nature walks.",
+    climateText: "Burgas has a mild maritime climate with warm summers (average 27-30°C in July-August) and cool winters (3-5°C in January). The sea water temperature reaches 24-26°C during the summer months. The best time for a beach vacation is June through September, while spring and autumn offer pleasant weather for cultural tourism and nature walks.",
     economyTitle: "Economy & Transport",
-    economyText:
-      "Burgas is a major industrial and transport hub. The city has an international airport (BOJ) with direct flights to many European cities, a central railway station, and an extensive bus network. The port of Burgas is the largest on the Bulgarian Black Sea coast, handling cargo and passenger ferries.",
-    factsTitle: "Key Facts",
-    facts: [
-      "Population: ~210,000 (4th in Bulgaria)",
-      "Area: 253.6 km\u00b2",
-      "Founded: as Pyrgos (ancient Thracian/Greek)",
-      "Climate: Mild maritime, 2500+ hours of sunshine",
-      "Coastline: Over 20 km of beaches",
-      "Lakes: 3 (Atanasovsko, Vaya, Mandrensko)",
-      "Airport: Burgas Airport (BOJ)",
-    ],
+    economyText: "Burgas is a major industrial and transport hub. The city has an international airport (BOJ) with direct flights to many European cities, a central railway station, and an extensive bus network. The port of Burgas is the largest on the Bulgarian Black Sea coast, handling cargo and passenger ferries.",
+    factsTitle: "Burgas at a Glance",
+    stats: { population: "210,000", area: "253.6", beaches: "20+", sunshine: "2,500+", lakes: "3", birds: "250+" },
+    statLabels: { population: "Population", area: "km² area", beaches: "km of beaches", sunshine: "hours of sunshine", lakes: "Surrounding lakes", birds: "Bird species" },
+    ctaExplore: "Explore the City",
+    ctaPlan: "Plan Your Stay",
+    ctaEvents: "See What's On",
   },
   bg: {
-    intro:
-      "\u0411\u0443\u0440\u0433\u0430\u0441 \u0435 \u0447\u0435\u0442\u0432\u044a\u0440\u0442\u0438\u044f\u0442 \u043f\u043e \u0433\u043e\u043b\u0435\u043c\u0438\u043d\u0430 \u0433\u0440\u0430\u0434 \u0432 \u0411\u044a\u043b\u0433\u0430\u0440\u0438\u044f, \u0440\u0430\u0437\u043f\u043e\u043b\u043e\u0436\u0435\u043d \u043d\u0430 \u044e\u0436\u043d\u043e\u0442\u043e \u0427\u0435\u0440\u043d\u043e\u043c\u043e\u0440\u0441\u043a\u043e \u043a\u0440\u0430\u0439\u0431\u0440\u0435\u0436\u0438\u0435. \u0421 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u0438\u0435 \u043e\u043a\u043e\u043b\u043e 210 000 \u0434\u0443\u0448\u0438, \u0442\u043e\u0439 \u0435 \u0438\u043a\u043e\u043d\u043e\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u044f\u0442, \u043a\u0443\u043b\u0442\u0443\u0440\u043d\u0438\u044f\u0442 \u0438 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u0438\u044f\u0442 \u0446\u0435\u043d\u0442\u044a\u0440 \u043d\u0430 \u042e\u0433\u043e\u0438\u0437\u0442\u043e\u0447\u043d\u0430 \u0411\u044a\u043b\u0433\u0430\u0440\u0438\u044f.",
-    locationTitle: "\u041c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0438 \u0433\u0435\u043e\u0433\u0440\u0430\u0444\u0438\u044f",
-    locationText:
-      "\u0420\u0430\u0437\u043f\u043e\u043b\u043e\u0436\u0435\u043d \u043d\u0430 \u043d\u0430\u0439-\u0437\u0430\u043f\u0430\u0434\u043d\u0430\u0442\u0430 \u0442\u043e\u0447\u043a\u0430 \u043d\u0430 \u0411\u0443\u0440\u0433\u0430\u0441\u043a\u0438\u044f \u0437\u0430\u043b\u0438\u0432, \u0433\u0440\u0430\u0434\u044a\u0442 \u0435 \u0437\u0430\u043e\u0431\u0438\u043a\u043e\u043b\u0435\u043d \u043e\u0442 \u0442\u0440\u0438 \u0435\u0437\u0435\u0440\u0430 \u2014 \u0410\u0442\u0430\u043d\u0430\u0441\u043e\u0432\u0441\u043a\u043e, \u0411\u0443\u0440\u0433\u0430\u0441\u043a\u043e (\u0412\u0430\u044f) \u0438 \u041c\u0430\u043d\u0434\u0440\u0435\u043d\u0441\u043a\u043e \u2014 \u043a\u043e\u0438\u0442\u043e \u0441\u0430 \u0434\u043e\u043c \u043d\u0430 \u043d\u0430\u0434 250 \u0432\u0438\u0434\u0430 \u043f\u0442\u0438\u0446\u0438. \u0420\u0435\u0433\u0438\u043e\u043d\u044a\u0442 \u0441\u0435 \u0440\u0430\u0434\u0432\u0430 \u043d\u0430 \u043c\u0435\u043a \u043c\u043e\u0440\u0441\u043a\u0438 \u043a\u043b\u0438\u043c\u0430\u0442 \u0441 \u043d\u0430\u0434 2500 \u0441\u043b\u044a\u043d\u0447\u0435\u0432\u0438 \u0447\u0430\u0441\u0430 \u0433\u043e\u0434\u0438\u0448\u043d\u043e, \u043a\u043e\u0435\u0442\u043e \u0433\u043e \u043f\u0440\u0430\u0432\u0438 \u0435\u0434\u043d\u043e \u043e\u0442 \u043d\u0430\u0439-\u0441\u043b\u044a\u043d\u0447\u0435\u0432\u0438\u0442\u0435 \u043c\u0435\u0441\u0442\u0430 \u0432 \u0415\u0432\u0440\u043e\u043f\u0430.",
-    historyTitle: "\u0418\u0441\u0442\u043e\u0440\u0438\u044f",
-    historyText:
-      "\u0420\u0430\u0439\u043e\u043d\u044a\u0442 \u0435 \u043d\u0430\u0441\u0435\u043b\u044f\u0432\u0430\u043d \u043e\u0442 \u0434\u0440\u0435\u0432\u043d\u043e\u0441\u0442\u0442\u0430. \u0414\u0440\u0435\u0432\u043d\u0438\u0442\u0435 \u0442\u0440\u0430\u043a\u0438\u0439\u0441\u043a\u0438 \u0441\u0435\u043b\u0438\u0449\u0430 \u0438 \u0433\u0440\u044a\u0446\u043a\u0430\u0442\u0430 \u043a\u043e\u043b\u043e\u043d\u0438\u044f \u041f\u0438\u0440\u0433\u043e\u0441 \u043f\u043e\u043b\u0430\u0433\u0430\u0442 \u0438\u0441\u0442\u043e\u0440\u0438\u0447\u0435\u0441\u043a\u0438\u0442\u0435 \u043e\u0441\u043d\u043e\u0432\u0438 \u043d\u0430 \u0441\u044a\u0432\u0440\u0435\u043c\u0435\u043d\u043d\u0438\u044f \u0411\u0443\u0440\u0433\u0430\u0441. \u041f\u0440\u0435\u0437 \u0432\u0435\u043a\u043e\u0432\u0435\u0442\u0435 \u0433\u0440\u0430\u0434\u044a\u0442 \u0441\u0435 \u0440\u0430\u0437\u0432\u0438\u0432\u0430 \u043a\u0430\u0442\u043e \u043a\u043b\u044e\u0447\u043e\u0432\u043e \u043f\u0440\u0438\u0441\u0442\u0430\u043d\u0438\u0449\u0435 \u043d\u0430 \u0427\u0435\u0440\u043d\u043e \u043c\u043e\u0440\u0435, \u0430 \u0434\u043d\u0435\u0441 \u0435 \u043d\u0430\u0439-\u0433\u043e\u043b\u0435\u043c\u0438\u044f\u0442 \u043f\u0440\u0438\u0441\u0442\u0430\u043d\u0438\u0449\u0435\u043d \u0433\u0440\u0430\u0434 \u0432 \u0411\u044a\u043b\u0433\u0430\u0440\u0438\u044f.",
-    cultureTitle: "\u041a\u0443\u043b\u0442\u0443\u0440\u0430 \u0438 \u0444\u0435\u0441\u0442\u0438\u0432\u0430\u043b\u0438",
-    cultureText:
-      "\u0411\u0443\u0440\u0433\u0430\u0441 \u0435 \u0438\u0437\u0432\u0435\u0441\u0442\u0435\u043d \u043a\u0430\u0442\u043e \u0433\u0440\u0430\u0434 \u043d\u0430 \u0444\u0435\u0441\u0442\u0438\u0432\u0430\u043b\u0438\u0442\u0435. \u0412\u0441\u044f\u043a\u043e \u043b\u044f\u0442\u043e \u0433\u0440\u0430\u0434\u044a\u0442 \u0435 \u0434\u043e\u043c\u0430\u043a\u0438\u043d \u043d\u0430 Spirit of Burgas (\u043c\u0435\u0436\u0434\u0443\u043d\u0430\u0440\u043e\u0434\u0435\u043d \u043c\u0443\u0437\u0438\u043a\u0430\u043b\u0435\u043d \u0444\u0435\u0441\u0442\u0438\u0432\u0430\u043b), \u0424\u0435\u0441\u0442\u0438\u0432\u0430\u043b\u0430 \u043d\u0430 \u043f\u044f\u0441\u044a\u0447\u043d\u0438\u0442\u0435 \u0441\u043a\u0443\u043b\u043f\u0442\u0443\u0440\u0438 \u043d\u0430 \u0426\u0435\u043d\u0442\u0440\u0430\u043b\u043d\u0438\u044f \u043f\u043b\u0430\u0436, Opera Open \u0432 \u041c\u043e\u0440\u0441\u043a\u0430\u0442\u0430 \u0433\u0440\u0430\u0434\u0438\u043d\u0430, \u043a\u0430\u043a\u0442\u043e \u0438 \u043c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u043e \u0430\u0440\u0442 \u0438 \u0442\u0435\u0430\u0442\u0440\u0430\u043b\u043d\u0438 \u0441\u044a\u0431\u0438\u0442\u0438\u044f. \u0413\u0440\u0430\u0434\u044a\u0442 \u0440\u0430\u0437\u043f\u043e\u043b\u0430\u0433\u0430 \u0441 \u0411\u0443\u0440\u0433\u0430\u0441\u043a\u0430 \u043e\u043f\u0435\u0440\u0430, \u0414\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u0435\u043d \u0442\u0435\u0430\u0442\u044a\u0440 \u201e\u0410\u0434\u0440\u0438\u0430\u043d\u0430 \u0411\u0443\u0434\u0435\u0432\u0441\u043a\u0430\u201c \u0438 \u0431\u043e\u0433\u0430\u0442\u0430 \u0433\u0430\u043b\u0435\u0440\u0438\u0439\u043d\u0430 \u043c\u0440\u0435\u0436\u0430.",
-    natureTitle: "\u041f\u0440\u0438\u0440\u043e\u0434\u0430 \u0438 \u043f\u0430\u0440\u043a\u043e\u0432\u0435",
-    natureText:
-      "\u041c\u043e\u0440\u0441\u043a\u0430\u0442\u0430 \u0433\u0440\u0430\u0434\u0438\u043d\u0430 \u0435 7-\u043a\u0438\u043b\u043e\u043c\u0435\u0442\u0440\u043e\u0432 \u043f\u0430\u0440\u043a, \u043f\u0440\u043e\u0441\u0442\u0438\u0440\u0430\u0449 \u0441\u0435 \u043f\u043e\u043a\u0440\u0430\u0439 \u0431\u0440\u0435\u0433\u043e\u0432\u0430\u0442\u0430 \u043b\u0438\u043d\u0438\u044f, \u0441 \u043c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u043e \u0441\u043a\u0443\u043b\u043f\u0442\u0443\u0440\u0438, \u0444\u043e\u043d\u0442\u0430\u043d\u0438, \u0434\u0435\u0442\u0441\u043a\u0438 \u043f\u043b\u043e\u0449\u0430\u0434\u043a\u0438 \u0438 \u043b\u044f\u0442\u0435\u043d \u0442\u0435\u0430\u0442\u044a\u0440. \u0417\u0430\u0449\u0438\u0442\u0435\u043d\u0430\u0442\u0430 \u043c\u0435\u0441\u0442\u043d\u043e\u0441\u0442 \u041f\u043e\u0434\u0430, \u0440\u0430\u0437\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0430 \u044e\u0436\u043d\u043e \u043e\u0442 \u0433\u0440\u0430\u0434\u0430, \u0435 \u043f\u0442\u0438\u0447\u0438 \u0440\u0435\u0437\u0435\u0440\u0432\u0430\u0442 \u0438 \u0435\u0434\u043d\u043e \u043e\u0442 \u043d\u0430\u0439-\u0432\u0430\u0436\u043d\u0438\u0442\u0435 \u0432\u043b\u0430\u0436\u043d\u0438 \u0437\u043e\u043d\u0438 \u043f\u043e \u0431\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u043e\u0442\u043e \u0427\u0435\u0440\u043d\u043e\u043c\u043e\u0440\u0438\u0435.",
-    climateTitle: "\u041a\u043b\u0438\u043c\u0430\u0442 \u0438 \u043d\u0430\u0439-\u0434\u043e\u0431\u0440\u043e \u0432\u0440\u0435\u043c\u0435 \u0437\u0430 \u043f\u043e\u0441\u0435\u0449\u0435\u043d\u0438\u0435",
-    climateText:
-      "\u0411\u0443\u0440\u0433\u0430\u0441 \u0438\u043c\u0430 \u043c\u0435\u043a \u043c\u043e\u0440\u0441\u043a\u0438 \u043a\u043b\u0438\u043c\u0430\u0442 \u0441 \u0442\u043e\u043f\u043b\u0438 \u043b\u0435\u0442\u0430 (\u0441\u0440\u0435\u0434\u043d\u043e 27-30\u00b0C \u043f\u0440\u0435\u0437 \u044e\u043b\u0438-\u0430\u0432\u0433\u0443\u0441\u0442) \u0438 \u043c\u0435\u043a\u0438 \u0437\u0438\u043c\u0438 (3-5\u00b0C \u043f\u0440\u0435\u0437 \u044f\u043d\u0443\u0430\u0440\u0438). \u0422\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430\u0442\u0430 \u043d\u0430 \u043c\u043e\u0440\u0441\u043a\u0430\u0442\u0430 \u0432\u043e\u0434\u0430 \u0434\u043e\u0441\u0442\u0438\u0433\u0430 24-26\u00b0C \u043f\u0440\u0435\u0437 \u043b\u0435\u0442\u043d\u0438\u0442\u0435 \u043c\u0435\u0441\u0435\u0446\u0438. \u041d\u0430\u0439-\u0434\u043e\u0431\u0440\u043e\u0442\u043e \u0432\u0440\u0435\u043c\u0435 \u0437\u0430 \u043f\u043b\u0430\u0436\u043d\u0430 \u0432\u0430\u043a\u0430\u043d\u0446\u0438\u044f \u0435 \u043e\u0442 \u044e\u043d\u0438 \u0434\u043e \u0441\u0435\u043f\u0442\u0435\u043c\u0432\u0440\u0438, \u0434\u043e\u043a\u0430\u0442\u043e \u043f\u0440\u043e\u043b\u0435\u0442\u0442\u0430 \u0438 \u0435\u0441\u0435\u043d\u0442\u0430 \u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0442 \u043f\u0440\u0438\u044f\u0442\u043d\u043e \u0432\u0440\u0435\u043c\u0435 \u0437\u0430 \u043a\u0443\u043b\u0442\u0443\u0440\u0435\u043d \u0442\u0443\u0440\u0438\u0437\u044a\u043c \u0438 \u0440\u0430\u0437\u0445\u043e\u0434\u043a\u0438 \u0441\u0440\u0435\u0434 \u043f\u0440\u0438\u0440\u043e\u0434\u0430\u0442\u0430.",
-    economyTitle: "\u0418\u043a\u043e\u043d\u043e\u043c\u0438\u043a\u0430 \u0438 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442",
-    economyText:
-      "\u0411\u0443\u0440\u0433\u0430\u0441 \u0435 \u0433\u043e\u043b\u044f\u043c \u0438\u043d\u0434\u0443\u0441\u0442\u0440\u0438\u0430\u043b\u0435\u043d \u0438 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0435\u043d \u0446\u0435\u043d\u0442\u044a\u0440. \u0413\u0440\u0430\u0434\u044a\u0442 \u0440\u0430\u0437\u043f\u043e\u043b\u0430\u0433\u0430 \u0441 \u043c\u0435\u0436\u0434\u0443\u043d\u0430\u0440\u043e\u0434\u043d\u043e \u043b\u0435\u0442\u0438\u0449\u0435 (BOJ), \u0446\u0435\u043d\u0442\u0440\u0430\u043b\u043d\u0430 \u0436.\u043f. \u0433\u0430\u0440\u0430 \u0438 \u043e\u0431\u0448\u0438\u0440\u043d\u0430 \u0430\u0432\u0442\u043e\u0431\u0443\u0441\u043d\u0430 \u043c\u0440\u0435\u0436\u0430. \u041f\u0440\u0438\u0441\u0442\u0430\u043d\u0438\u0449\u0435\u0442\u043e \u043d\u0430 \u0411\u0443\u0440\u0433\u0430\u0441 \u0435 \u043d\u0430\u0439-\u0433\u043e\u043b\u044f\u043c\u043e\u0442\u043e \u043f\u043e \u0431\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u043e\u0442\u043e \u0427\u0435\u0440\u043d\u043e\u043c\u043e\u0440\u0438\u0435.",
-    factsTitle: "\u041a\u043b\u044e\u0447\u043e\u0432\u0438 \u0444\u0430\u043a\u0442\u0438",
-    facts: [
-      "\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438\u0435: ~210 000 (4-\u0442\u0438 \u0432 \u0411\u044a\u043b\u0433\u0430\u0440\u0438\u044f)",
-      "\u041f\u043b\u043e\u0449: 253,6 km\u00b2",
-      "\u041e\u0441\u043d\u043e\u0432\u0430\u043d: \u043a\u0430\u0442\u043e \u041f\u0438\u0440\u0433\u043e\u0441 (\u0434\u0440\u0435\u0432\u043d\u043e\u0442\u0440\u0430\u043a\u0438\u0439\u0441\u043a\u043e/\u0433\u0440\u044a\u0446\u043a\u043e \u0441\u0435\u043b\u0438\u0449\u0435)",
-      "\u041a\u043b\u0438\u043c\u0430\u0442: \u041c\u0435\u043a \u043c\u043e\u0440\u0441\u043a\u0438, 2500+ \u0441\u043b\u044a\u043d\u0447\u0435\u0432\u0438 \u0447\u0430\u0441\u0430",
-      "\u041a\u0440\u0430\u0439\u0431\u0440\u0435\u0436\u0438\u0435: \u041d\u0430\u0434 20 km \u043f\u043b\u0430\u0436\u043e\u0432\u0435",
-      "\u0415\u0437\u0435\u0440\u0430: 3 (\u0410\u0442\u0430\u043d\u0430\u0441\u043e\u0432\u0441\u043a\u043e, \u0412\u0430\u044f, \u041c\u0430\u043d\u0434\u0440\u0435\u043d\u0441\u043a\u043e)",
-      "\u041b\u0435\u0442\u0438\u0449\u0435: \u041b\u0435\u0442\u0438\u0449\u0435 \u0411\u0443\u0440\u0433\u0430\u0441 (BOJ)",
-    ],
+    intro: "Бургас е четвъртият по големина град в България, разположен на южното Черноморско крайбрежие. С население около 210 000 души, той е икономическият, културният и административният център на Югоизточна България.",
+    locationTitle: "Местоположение и география",
+    locationText: "Разположен на най-западната точка на Бургаския залив, градът е заобиколен от три езера — Атанасовско, Бургаско (Вая) и Мандренско — които са дом на над 250 вида птици. Регионът се радва на мек морски климат с над 2500 слънчеви часа годишно, което го прави едно от най-слънчевите места в Европа.",
+    historyTitle: "История",
+    historyText: "Районът е населяван от древността. Древните тракийски селища и гръцката колония Пиргос полагат историческите основи на съвременния Бургас. През вековете градът се развива като ключово пристанище на Черно море, а днес е най-големият пристанищен град в България.",
+    cultureTitle: "Култура и фестивали",
+    cultureText: "Бургас е известен като град на фестивалите. Всяко лято градът е домакин на Spirit of Burgas (международен музикален фестивал), Фестивала на пясъчните скулптури на Централния плаж, Opera Open в Морската градина, както и множество арт и театрални събития. Градът разполага с Бургаска опера, Драматичен театър \u201EАдриана Будевска\u201C и богата галерийна мрежа.",
+    natureTitle: "Природа и паркове",
+    natureText: "Морската градина е 7-километров парк, простиращ се покрай бреговата линия, с множество скулптури, фонтани, детски площадки и летен театър. Защитената местност Пода, разположена южно от града, е птичи резерват и едно от най-важните влажни зони по българското Черноморие.",
+    climateTitle: "Климат и най-добро време за посещение",
+    climateText: "Бургас има мек морски климат с топли лета (средно 27-30°C през юли-август) и меки зими (3-5°C през януари). Температурата на морската вода достига 24-26°C през летните месеци. Най-доброто време за плажна ваканция е от юни до септември, докато пролетта и есента предлагат приятно време за културен туризъм и разходки сред природата.",
+    economyTitle: "Икономика и транспорт",
+    economyText: "Бургас е голям индустриален и транспортен център. Градът разполага с международно летище (BOJ), централна ж.п. гара и обширна автобусна мрежа. Пристанището на Бургас е най-голямото по българското Черноморие.",
+    factsTitle: "Бургас накратко",
+    stats: { population: "210 000", area: "253,6", beaches: "20+", sunshine: "2 500+", lakes: "3", birds: "250+" },
+    statLabels: { population: "Население", area: "km² площ", beaches: "km плажове", sunshine: "слънчеви часа", lakes: "Езера около града", birds: "Вида птици" },
+    ctaExplore: "Разгледайте града",
+    ctaPlan: "Планирайте престоя",
+    ctaEvents: "Вижте събитията",
   },
   ru: {
-    intro:
-      "\u0411\u0443\u0440\u0433\u0430\u0441 \u2014 \u0447\u0435\u0442\u0432\u0451\u0440\u0442\u044b\u0439 \u043f\u043e \u0432\u0435\u043b\u0438\u0447\u0438\u043d\u0435 \u0433\u043e\u0440\u043e\u0434 \u0411\u043e\u043b\u0433\u0430\u0440\u0438\u0438, \u0440\u0430\u0441\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u043d\u044b\u0439 \u043d\u0430 \u044e\u0436\u043d\u043e\u043c \u043f\u043e\u0431\u0435\u0440\u0435\u0436\u044c\u0435 \u0427\u0451\u0440\u043d\u043e\u0433\u043e \u043c\u043e\u0440\u044f. \u0421 \u043d\u0430\u0441\u0435\u043b\u0435\u043d\u0438\u0435\u043c \u043e\u043a\u043e\u043b\u043e 210 000 \u0447\u0435\u043b\u043e\u0432\u0435\u043a, \u043e\u043d \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u043c, \u043a\u0443\u043b\u044c\u0442\u0443\u0440\u043d\u044b\u043c \u0438 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u044b\u043c \u0446\u0435\u043d\u0442\u0440\u043e\u043c \u044e\u0433\u043e-\u0432\u043e\u0441\u0442\u043e\u0447\u043d\u043e\u0439 \u0411\u043e\u043b\u0433\u0430\u0440\u0438\u0438.",
-    locationTitle: "\u041c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0438 \u0433\u0435\u043e\u0433\u0440\u0430\u0444\u0438\u044f",
-    locationText:
-      "\u0420\u0430\u0441\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u043d\u044b\u0439 \u0432 \u0441\u0430\u043c\u043e\u0439 \u0437\u0430\u043f\u0430\u0434\u043d\u043e\u0439 \u0442\u043e\u0447\u043a\u0435 \u0411\u0443\u0440\u0433\u0430\u0441\u0441\u043a\u043e\u0433\u043e \u0437\u0430\u043b\u0438\u0432\u0430, \u0433\u043e\u0440\u043e\u0434 \u043e\u043a\u0440\u0443\u0436\u0451\u043d \u0442\u0440\u0435\u043c\u044f \u043e\u0437\u0451\u0440\u0430\u043c\u0438 \u2014 \u0410\u0442\u0430\u043d\u0430\u0441\u043e\u0432\u0441\u043a\u043e\u0435, \u0411\u0443\u0440\u0433\u0430\u0441\u0441\u043a\u043e\u0435 (\u0412\u0430\u044f) \u0438 \u041c\u0430\u043d\u0434\u0440\u0435\u043d\u0441\u043a\u043e\u0435 \u2014 \u0432 \u043a\u043e\u0442\u043e\u0440\u044b\u0445 \u043e\u0431\u0438\u0442\u0430\u0435\u0442 \u0431\u043e\u043b\u0435\u0435 250 \u0432\u0438\u0434\u043e\u0432 \u043f\u0442\u0438\u0446. \u0420\u0435\u0433\u0438\u043e\u043d \u043e\u0442\u043b\u0438\u0447\u0430\u0435\u0442\u0441\u044f \u043c\u044f\u0433\u043a\u0438\u043c \u043c\u043e\u0440\u0441\u043a\u0438\u043c \u043a\u043b\u0438\u043c\u0430\u0442\u043e\u043c \u0441 \u0431\u043e\u043b\u0435\u0435 \u0447\u0435\u043c 2500 \u0441\u043e\u043b\u043d\u0435\u0447\u043d\u044b\u043c\u0438 \u0447\u0430\u0441\u0430\u043c\u0438 \u0432 \u0433\u043e\u0434, \u0447\u0442\u043e \u0434\u0435\u043b\u0430\u0435\u0442 \u0435\u0433\u043e \u043e\u0434\u043d\u0438\u043c \u0438\u0437 \u0441\u0430\u043c\u044b\u0445 \u0441\u043e\u043b\u043d\u0435\u0447\u043d\u044b\u0445 \u043c\u0435\u0441\u0442 \u0432 \u0415\u0432\u0440\u043e\u043f\u0435.",
-    historyTitle: "\u0418\u0441\u0442\u043e\u0440\u0438\u044f",
-    historyText:
-      "\u042d\u0442\u043e\u0442 \u0440\u0430\u0439\u043e\u043d \u0431\u044b\u043b \u043d\u0430\u0441\u0435\u043b\u0451\u043d \u0441 \u0434\u0440\u0435\u0432\u043d\u0438\u0445 \u0432\u0440\u0435\u043c\u0451\u043d. \u0414\u0440\u0435\u0432\u043d\u0438\u0435 \u0444\u0440\u0430\u043a\u0438\u0439\u0441\u043a\u0438\u0435 \u043f\u043e\u0441\u0435\u043b\u0435\u043d\u0438\u044f \u0438 \u0433\u0440\u0435\u0447\u0435\u0441\u043a\u0430\u044f \u043a\u043e\u043b\u043e\u043d\u0438\u044f \u041f\u0438\u0440\u0433\u043e\u0441 \u0437\u0430\u043b\u043e\u0436\u0438\u043b\u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043e\u0441\u043d\u043e\u0432\u044b \u0441\u043e\u0432\u0440\u0435\u043c\u0435\u043d\u043d\u043e\u0433\u043e \u0411\u0443\u0440\u0433\u0430\u0441\u0430. \u041d\u0430 \u043f\u0440\u043e\u0442\u044f\u0436\u0435\u043d\u0438\u0438 \u0432\u0435\u043a\u043e\u0432 \u0433\u043e\u0440\u043e\u0434 \u0440\u0430\u0437\u0432\u0438\u0432\u0430\u043b\u0441\u044f \u043a\u0430\u043a \u043a\u043b\u044e\u0447\u0435\u0432\u043e\u0439 \u043f\u043e\u0440\u0442 \u043d\u0430 \u0427\u0451\u0440\u043d\u043e\u043c \u043c\u043e\u0440\u0435, \u0430 \u0441\u0435\u0433\u043e\u0434\u043d\u044f \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u043a\u0440\u0443\u043f\u043d\u0435\u0439\u0448\u0438\u043c \u043f\u043e\u0440\u0442\u043e\u0432\u044b\u043c \u0433\u043e\u0440\u043e\u0434\u043e\u043c \u0411\u043e\u043b\u0433\u0430\u0440\u0438\u0438.",
-    cultureTitle: "\u041a\u0443\u043b\u044c\u0442\u0443\u0440\u0430 \u0438 \u0444\u0435\u0441\u0442\u0438\u0432\u0430\u043b\u0438",
-    cultureText:
-      "\u0411\u0443\u0440\u0433\u0430\u0441 \u0438\u0437\u0432\u0435\u0441\u0442\u0435\u043d \u043a\u0430\u043a \u0433\u043e\u0440\u043e\u0434 \u0444\u0435\u0441\u0442\u0438\u0432\u0430\u043b\u0435\u0439. \u041a\u0430\u0436\u0434\u043e\u0435 \u043b\u0435\u0442\u043e \u0437\u0434\u0435\u0441\u044c \u043f\u0440\u043e\u0445\u043e\u0434\u044f\u0442 Spirit of Burgas (\u043c\u0435\u0436\u0434\u0443\u043d\u0430\u0440\u043e\u0434\u043d\u044b\u0439 \u043c\u0443\u0437\u044b\u043a\u0430\u043b\u044c\u043d\u044b\u0439 \u0444\u0435\u0441\u0442\u0438\u0432\u0430\u043b\u044c), \u0424\u0435\u0441\u0442\u0438\u0432\u0430\u043b\u044c \u043f\u0435\u0441\u0447\u0430\u043d\u044b\u0445 \u0441\u043a\u0443\u043b\u044c\u043f\u0442\u0443\u0440 \u043d\u0430 \u0426\u0435\u043d\u0442\u0440\u0430\u043b\u044c\u043d\u043e\u043c \u043f\u043b\u044f\u0436\u0435, Opera Open \u0432 \u041f\u0440\u0438\u043c\u043e\u0440\u0441\u043a\u043e\u043c \u043f\u0430\u0440\u043a\u0435, \u0430 \u0442\u0430\u043a\u0436\u0435 \u043c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u043e \u0445\u0443\u0434\u043e\u0436\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0445 \u0438 \u0442\u0435\u0430\u0442\u0440\u0430\u043b\u044c\u043d\u044b\u0445 \u043c\u0435\u0440\u043e\u043f\u0440\u0438\u044f\u0442\u0438\u0439. \u0412 \u0433\u043e\u0440\u043e\u0434\u0435 \u0435\u0441\u0442\u044c \u0411\u0443\u0440\u0433\u0430\u0441\u0441\u043a\u0430\u044f \u043e\u043f\u0435\u0440\u0430, \u0414\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0442\u0435\u0430\u0442\u0440 \u00ab\u0410\u0434\u0440\u0438\u0430\u043d\u0430 \u0411\u0443\u0434\u0435\u0432\u0441\u043a\u0430\u00bb \u0438 \u0431\u043e\u0433\u0430\u0442\u0430\u044f \u0433\u0430\u043b\u0435\u0440\u0435\u0439\u043d\u0430\u044f \u0441\u0435\u0442\u044c.",
-    natureTitle: "\u041f\u0440\u0438\u0440\u043e\u0434\u0430 \u0438 \u043f\u0430\u0440\u043a\u0438",
-    natureText:
-      "\u041f\u0440\u0438\u043c\u043e\u0440\u0441\u043a\u0438\u0439 \u043f\u0430\u0440\u043a (\u041c\u043e\u0440\u0441\u043a\u0430 \u0433\u0440\u0430\u0434\u0438\u043d\u0430) \u2014 \u044d\u0442\u043e 7-\u043a\u0438\u043b\u043e\u043c\u0435\u0442\u0440\u043e\u0432\u044b\u0439 \u043f\u0430\u0440\u043a \u0432\u0434\u043e\u043b\u044c \u0431\u0435\u0440\u0435\u0433\u043e\u0432\u043e\u0439 \u043b\u0438\u043d\u0438\u0438 \u0441 \u043c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u043e\u043c \u0441\u043a\u0443\u043b\u044c\u043f\u0442\u0443\u0440, \u0444\u043e\u043d\u0442\u0430\u043d\u043e\u0432, \u0434\u0435\u0442\u0441\u043a\u0438\u0445 \u043f\u043b\u043e\u0449\u0430\u0434\u043e\u043a \u0438 \u043b\u0435\u0442\u043d\u0438\u043c \u0442\u0435\u0430\u0442\u0440\u043e\u043c. \u041e\u0445\u0440\u0430\u043d\u044f\u0435\u043c\u0430\u044f \u0442\u0435\u0440\u0440\u0438\u0442\u043e\u0440\u0438\u044f \u041f\u043e\u0434\u0430, \u0440\u0430\u0441\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u043d\u0430\u044f \u043a \u044e\u0433\u0443 \u043e\u0442 \u0433\u043e\u0440\u043e\u0434\u0430, \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u043f\u0442\u0438\u0447\u044c\u0438\u043c \u0437\u0430\u043f\u043e\u0432\u0435\u0434\u043d\u0438\u043a\u043e\u043c \u0438 \u043e\u0434\u043d\u0438\u043c \u0438\u0437 \u0432\u0430\u0436\u043d\u0435\u0439\u0448\u0438\u0445 \u0432\u043e\u0434\u043d\u043e-\u0431\u043e\u043b\u043e\u0442\u043d\u044b\u0445 \u0443\u0433\u043e\u0434\u0438\u0439 \u0431\u043e\u043b\u0433\u0430\u0440\u0441\u043a\u043e\u0433\u043e \u0427\u0435\u0440\u043d\u043e\u043c\u043e\u0440\u044c\u044f.",
-    climateTitle: "\u041a\u043b\u0438\u043c\u0430\u0442 \u0438 \u043b\u0443\u0447\u0448\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u0434\u043b\u044f \u043f\u043e\u0441\u0435\u0449\u0435\u043d\u0438\u044f",
-    climateText:
-      "\u0411\u0443\u0440\u0433\u0430\u0441 \u0438\u043c\u0435\u0435\u0442 \u043c\u044f\u0433\u043a\u0438\u0439 \u043c\u043e\u0440\u0441\u043a\u043e\u0439 \u043a\u043b\u0438\u043c\u0430\u0442 \u0441 \u0442\u0451\u043f\u043b\u044b\u043c \u043b\u0435\u0442\u043e\u043c (\u0432 \u0441\u0440\u0435\u0434\u043d\u0435\u043c 27-30\u00b0C \u0432 \u0438\u044e\u043b\u0435-\u0430\u0432\u0433\u0443\u0441\u0442\u0435) \u0438 \u043f\u0440\u043e\u0445\u043b\u0430\u0434\u043d\u043e\u0439 \u0437\u0438\u043c\u043e\u0439 (3-5\u00b0C \u0432 \u044f\u043d\u0432\u0430\u0440\u0435). \u0422\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430 \u043c\u043e\u0440\u0441\u043a\u043e\u0439 \u0432\u043e\u0434\u044b \u0434\u043e\u0441\u0442\u0438\u0433\u0430\u0435\u0442 24-26\u00b0C \u043b\u0435\u0442\u043e\u043c. \u041b\u0443\u0447\u0448\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u0434\u043b\u044f \u043f\u043b\u044f\u0436\u043d\u043e\u0433\u043e \u043e\u0442\u0434\u044b\u0445\u0430 \u2014 \u0441 \u0438\u044e\u043d\u044f \u043f\u043e \u0441\u0435\u043d\u0442\u044f\u0431\u0440\u044c, \u0432\u0435\u0441\u043d\u0430 \u0438 \u043e\u0441\u0435\u043d\u044c \u0438\u0434\u0435\u0430\u043b\u044c\u043d\u044b \u0434\u043b\u044f \u043a\u0443\u043b\u044c\u0442\u0443\u0440\u043d\u043e\u0433\u043e \u0442\u0443\u0440\u0438\u0437\u043c\u0430 \u0438 \u043f\u0440\u043e\u0433\u0443\u043b\u043e\u043a \u043d\u0430 \u043f\u0440\u0438\u0440\u043e\u0434\u0435.",
-    economyTitle: "\u042d\u043a\u043e\u043d\u043e\u043c\u0438\u043a\u0430 \u0438 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442",
-    economyText:
-      "\u0411\u0443\u0440\u0433\u0430\u0441 \u2014 \u043a\u0440\u0443\u043f\u043d\u044b\u0439 \u0438\u043d\u0434\u0443\u0441\u0442\u0440\u0438\u0430\u043b\u044c\u043d\u044b\u0439 \u0438 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d\u044b\u0439 \u0446\u0435\u043d\u0442\u0440. \u0412 \u0433\u043e\u0440\u043e\u0434\u0435 \u0435\u0441\u0442\u044c \u043c\u0435\u0436\u0434\u0443\u043d\u0430\u0440\u043e\u0434\u043d\u044b\u0439 \u0430\u044d\u0440\u043e\u043f\u043e\u0440\u0442 (BOJ), \u0446\u0435\u043d\u0442\u0440\u0430\u043b\u044c\u043d\u044b\u0439 \u0436/\u0434 \u0432\u043e\u043a\u0437\u0430\u043b \u0438 \u0440\u0430\u0437\u0432\u0435\u0442\u0432\u043b\u0451\u043d\u043d\u0430\u044f \u0430\u0432\u0442\u043e\u0431\u0443\u0441\u043d\u0430\u044f \u0441\u0435\u0442\u044c. \u041f\u043e\u0440\u0442 \u0411\u0443\u0440\u0433\u0430\u0441\u0430 \u2014 \u043a\u0440\u0443\u043f\u043d\u0435\u0439\u0448\u0438\u0439 \u043d\u0430 \u0431\u043e\u043b\u0433\u0430\u0440\u0441\u043a\u043e\u043c \u0427\u0435\u0440\u043d\u043e\u043c\u043e\u0440\u044c\u0435.",
-    factsTitle: "\u041a\u043b\u044e\u0447\u0435\u0432\u044b\u0435 \u0444\u0430\u043a\u0442\u044b",
-    facts: [
-      "\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438\u0435: ~210 000 (4-\u0439 \u0432 \u0411\u043e\u043b\u0433\u0430\u0440\u0438\u0438)",
-      "\u041f\u043b\u043e\u0449\u0430\u0434\u044c: 253,6 km\u00b2",
-      "\u041e\u0441\u043d\u043e\u0432\u0430\u043d: \u043a\u0430\u043a \u041f\u0438\u0440\u0433\u043e\u0441 (\u0434\u0440\u0435\u0432\u043d\u0435\u0444\u0440\u0430\u043a\u0438\u0439\u0441\u043a\u043e\u0435/\u0433\u0440\u0435\u0447\u0435\u0441\u043a\u043e\u0435 \u043f\u043e\u0441\u0435\u043b\u0435\u043d\u0438\u0435)",
-      "\u041a\u043b\u0438\u043c\u0430\u0442: \u041c\u044f\u0433\u043a\u0438\u0439 \u043c\u043e\u0440\u0441\u043a\u043e\u0439, 2500+ \u0441\u043e\u043b\u043d\u0435\u0447\u043d\u044b\u0445 \u0447\u0430\u0441\u043e\u0432",
-      "\u041f\u043e\u0431\u0435\u0440\u0435\u0436\u044c\u0435: \u0411\u043e\u043b\u0435\u0435 20 km \u043f\u043b\u044f\u0436\u0435\u0439",
-      "\u041e\u0437\u0451\u0440\u0430: 3 (\u0410\u0442\u0430\u043d\u0430\u0441\u043e\u0432\u0441\u043a\u043e\u0435, \u0412\u0430\u044f, \u041c\u0430\u043d\u0434\u0440\u0435\u043d\u0441\u043a\u043e\u0435)",
-      "\u0410\u044d\u0440\u043e\u043f\u043e\u0440\u0442: \u0410\u044d\u0440\u043e\u043f\u043e\u0440\u0442 \u0411\u0443\u0440\u0433\u0430\u0441 (BOJ)",
-    ],
+    intro: "Бургас — четвёртый по величине город Болгарии, расположенный на южном побережье Чёрного моря. С населением около 210 000 человек, он является экономическим, культурным и административным центром юго-восточной Болгарии.",
+    locationTitle: "Местоположение и география",
+    locationText: "Расположенный в самой западной точке Бургасского залива, город окружён тремя озёрами — Атанасовское, Бургасское (Вая) и Мандренское — в которых обитает более 250 видов птиц. Регион отличается мягким морским климатом с более чем 2500 солнечными часами в год, что делает его одним из самых солнечных мест в Европе.",
+    historyTitle: "История",
+    historyText: "Этот район был населён с древних времён. Древние фракийские поселения и греческая колония Пиргос заложили исторические основы современного Бургаса. На протяжении веков город развивался как ключевой порт на Чёрном море, а сегодня является крупнейшим портовым городом Болгарии.",
+    cultureTitle: "Культура и фестивали",
+    cultureText: "Бургас известен как город фестивалей. Каждое лето здесь проходят Spirit of Burgas (международный музыкальный фестиваль), Фестиваль песчаных скульптур на Центральном пляже, Opera Open в Приморском парке, а также множество художественных и театральных мероприятий. В городе есть Бургасская опера, Драматический театр «Адриана Будевска» и богатая галерейная сеть.",
+    natureTitle: "Природа и парки",
+    natureText: "Приморский парк (Морска градина) — это 7-километровый парк вдоль береговой линии с множеством скульптур, фонтанов, детских площадок и летним театром. Охраняемая территория Пода, расположенная к югу от города, является птичьим заповедником и одним из важнейших водно-болотных угодий болгарского Черноморья.",
+    climateTitle: "Климат и лучшее время для посещения",
+    climateText: "Бургас имеет мягкий морской климат с тёплым летом (в среднем 27-30°C в июле-августе) и прохладной зимой (3-5°C в январе). Температура морской воды достигает 24-26°C летом. Лучшее время для пляжного отдыха — с июня по сентябрь, весна и осень идеальны для культурного туризма и прогулок на природе.",
+    economyTitle: "Экономика и транспорт",
+    economyText: "Бургас — крупный индустриальный и транспортный центр. В городе есть международный аэропорт (BOJ), центральный ж/д вокзал и разветвлённая автобусная сеть. Порт Бургаса — крупнейший на болгарском Черноморье.",
+    factsTitle: "Бургас кратко",
+    stats: { population: "210 000", area: "253,6", beaches: "20+", sunshine: "2 500+", lakes: "3", birds: "250+" },
+    statLabels: { population: "Население", area: "км² площадь", beaches: "км пляжей", sunshine: "солнечных часов", lakes: "Озёра вокруг", birds: "Видов птиц" },
+    ctaExplore: "Исследуйте город",
+    ctaPlan: "Спланируйте визит",
+    ctaEvents: "Смотрите события",
   },
 } as const;
 
@@ -126,17 +95,9 @@ export default async function AboutPage({ params }: Props) {
     { label: dict.about.title },
   ];
 
-  const sections = [
-    { title: c.locationTitle, text: c.locationText },
-    { title: c.historyTitle, text: c.historyText },
-    { title: c.cultureTitle, text: c.cultureText },
-    { title: c.natureTitle, text: c.natureText },
-    { title: c.climateTitle, text: c.climateText },
-    { title: c.economyTitle, text: c.economyText },
-  ];
-
   return (
     <>
+      {/* ─── HERO ─── */}
       <PageHero
         title={dict.about.title}
         subtitle={c.intro}
@@ -144,43 +105,169 @@ export default async function AboutPage({ params }: Props) {
         backgroundImage="/images/places/sea-garden.jpg"
       />
 
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-3">
-          {/* Main content */}
-          <div className="space-y-10 lg:col-span-2">
-            {sections.map((section, i) => (
-              <ScrollReveal key={section.title} delay={i * 80}>
-                <section>
-                  <h2 className="font-display text-2xl font-bold text-text-primary">
-                    {section.title}
-                  </h2>
-                  <p className="mt-3 leading-relaxed text-text-secondary">
-                    {section.text}
-                  </p>
-                </section>
-              </ScrollReveal>
+      {/* ─── STATS STRIP ─── Key facts as bold numbers */}
+      <section className="bg-surface-warm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+            {(Object.keys(c.stats) as (keyof typeof c.stats)[]).map((key) => (
+              <div key={key} className="text-center">
+                <span className="font-display text-3xl md:text-4xl font-bold text-primary">
+                  {c.stats[key]}
+                </span>
+                <span className="block mt-1 text-xs font-medium text-text-muted uppercase tracking-wider">
+                  {c.statLabels[key]}
+                </span>
+              </div>
             ))}
           </div>
-
-          {/* Key Facts sidebar */}
-          <aside>
-            <div className="sticky top-24 rounded-xl border-l-4 border-secondary bg-primary/5 p-6">
-              <h2 className="text-xl font-bold text-text-primary">{c.factsTitle}</h2>
-              <ul className="mt-4 space-y-3">
-                {c.facts.map((fact) => (
-                  <li
-                    key={fact}
-                    className="flex items-start gap-2 text-sm text-text-secondary"
-                  >
-                    <span className="mt-0.5 block h-2 w-2 shrink-0 rounded-full bg-primary" />
-                    {fact}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </aside>
         </div>
-      </div>
+      </section>
+
+      {/* ─── LOCATION ─── Photo left, text right */}
+      <section className="bg-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-[var(--shadow-card-hover)]">
+                <Image src="/images/places/lake-bridge.jpg" alt="" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 40vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/15 to-transparent" />
+              </div>
+              <div className="hidden lg:block absolute -bottom-4 -right-4 w-full h-full rounded-2xl border-2 border-primary/15 -z-10" />
+            </div>
+            <div className="lg:col-span-7">
+              <div className="h-px w-16 bg-primary mb-6" />
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-text-primary mb-4">{c.locationTitle}</h2>
+              <p className="text-text-secondary leading-relaxed text-lg">{c.locationText}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── HISTORY ─── Text left, photo right (reversed) */}
+      <section className="bg-surface-warm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div className="lg:col-span-7 order-2 lg:order-1">
+              <div className="h-px w-16 bg-secondary mb-6" />
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-text-primary mb-4">{c.historyTitle}</h2>
+              <p className="text-text-secondary leading-relaxed text-lg">{c.historyText}</p>
+            </div>
+            <div className="lg:col-span-5 relative order-1 lg:order-2">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-[var(--shadow-card-hover)]">
+                <Image src="/images/places/aquae-calidae.jpg" alt="" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 40vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary/15 to-transparent" />
+              </div>
+              <div className="hidden lg:block absolute -bottom-4 -left-4 w-full h-full rounded-2xl border-2 border-secondary/15 -z-10" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CULTURE INTERLUDE ─── Full-bleed photo with quote */}
+      <section className="relative h-[50vh] sm:h-[55vh] lg:h-[60vh] overflow-hidden">
+        <Image src="/images/events/spirit-of-burgas.jpg" alt="" fill className="object-cover" sizes="100vw" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+        <div className="relative z-10 flex h-full items-center">
+          <div className="max-w-2xl px-6 sm:px-12 lg:px-20">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-white leading-tight mb-4">{c.cultureTitle}</h2>
+            <p className="text-white/75 text-base sm:text-lg leading-relaxed">{c.cultureText}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── NATURE ─── Photo left, text right */}
+      <section className="bg-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-[var(--shadow-card-hover)]">
+                <Image src="/images/places/poda.jpg" alt="" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 40vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-teal/15 to-transparent" />
+              </div>
+              <div className="hidden lg:block absolute -bottom-4 -right-4 w-full h-full rounded-2xl border-2 border-teal/15 -z-10" />
+            </div>
+            <div className="lg:col-span-7">
+              <div className="h-px w-16 bg-teal mb-6" />
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-text-primary mb-4">{c.natureTitle}</h2>
+              <p className="text-text-secondary leading-relaxed text-lg">{c.natureText}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CLIMATE + TRANSPORT ─── Side by side cards */}
+      <section className="bg-surface-warm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="rounded-2xl bg-surface border border-border/50 p-8">
+              <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-5">
+                <span className="text-2xl">☀️</span>
+              </div>
+              <h2 className="font-display text-2xl font-bold text-text-primary mb-3">{c.climateTitle}</h2>
+              <p className="text-text-secondary leading-relaxed">{c.climateText}</p>
+              <Link href={`/${locale}/weather`} className="inline-flex items-center gap-1.5 mt-5 text-sm font-semibold text-primary hover:text-primary-dark transition-colors">
+                {dict.weather.title}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+              </Link>
+            </div>
+            <div className="rounded-2xl bg-surface border border-border/50 p-8">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                <span className="text-2xl">✈️</span>
+              </div>
+              <h2 className="font-display text-2xl font-bold text-text-primary mb-3">{c.economyTitle}</h2>
+              <p className="text-text-secondary leading-relaxed">{c.economyText}</p>
+              <Link href={`/${locale}/plan/transport`} className="inline-flex items-center gap-1.5 mt-5 text-sm font-semibold text-primary hover:text-primary-dark transition-colors">
+                {dict.categories.transport}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CROSS-LINKS ─── Three photo-backed teasers */}
+      <section className="bg-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+          <div className="grid sm:grid-cols-3 gap-5">
+            <Link href={`/${locale}/explore`} className="group relative h-[260px] sm:h-[300px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow">
+              <Image src="/images/places/cathedral.jpg" alt="" fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]" sizes="(max-width: 640px) 100vw, 33vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/5" />
+              <div className="absolute top-0 inset-x-0 h-1 bg-primary" />
+              <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6">
+                <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-1">{c.ctaExplore}</h3>
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/80 group-hover:text-white transition-colors">
+                  {dict.home.viewAll}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                </span>
+              </div>
+            </Link>
+            <Link href={`/${locale}/plan`} className="group relative h-[260px] sm:h-[300px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow">
+              <Image src="/images/places/restaurant-ethno.jpg" alt="" fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]" sizes="(max-width: 640px) 100vw, 33vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/5" />
+              <div className="absolute top-0 inset-x-0 h-1 bg-secondary" />
+              <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6">
+                <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-1">{c.ctaPlan}</h3>
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/80 group-hover:text-white transition-colors">
+                  {dict.home.viewAll}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                </span>
+              </div>
+            </Link>
+            <Link href={`/${locale}/events`} className="group relative h-[260px] sm:h-[300px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow">
+              <Image src="/images/events/opera-open.jpg" alt="" fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]" sizes="(max-width: 640px) 100vw, 33vw" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/5" />
+              <div className="absolute top-0 inset-x-0 h-1 bg-accent" />
+              <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-6">
+                <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-1">{c.ctaEvents}</h3>
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/80 group-hover:text-white transition-colors">
+                  {dict.home.viewAll}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                </span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
