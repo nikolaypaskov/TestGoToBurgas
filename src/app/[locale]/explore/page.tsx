@@ -187,7 +187,7 @@ export default async function ExplorePage({ params }: Props) {
             {/* Events teaser */}
             <Link
               href={`/${typedLocale}/events`}
-              className="group relative h-[280px] sm:h-[340px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow"
+              className="group relative h-[280px] sm:h-[340px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer"
             >
               <Image
                 src="/images/events/spirit-of-burgas.jpg"
@@ -221,7 +221,7 @@ export default async function ExplorePage({ params }: Props) {
             {/* Plan teaser */}
             <Link
               href={`/${typedLocale}/plan`}
-              className="group relative h-[280px] sm:h-[340px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow"
+              className="group relative h-[280px] sm:h-[340px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer"
             >
               <Image
                 src="/images/places/alexandrovska.jpg"

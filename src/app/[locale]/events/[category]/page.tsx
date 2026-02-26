@@ -51,12 +51,15 @@ export default async function EventsCategoryPage({ params }: Props) {
     { label: categoryName },
   ];
 
+  const categoryMeta = eventCategories[category];
+
   return (
     <>
       <PageHero
         title={categoryName}
+        subtitle={`${events.length} ${events.length === 1 ? "event" : "events"}`}
         breadcrumbs={breadcrumbs}
-        accentColor="var(--color-events)"
+        backgroundImage={categoryMeta.image}
         compact
       />
       <div className="bg-surface-warm">

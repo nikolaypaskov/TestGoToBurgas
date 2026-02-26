@@ -164,7 +164,7 @@ export default async function AboutPage({ params }: Props) {
       </section>
 
       {/* ─── CULTURE INTERLUDE ─── Full-bleed photo with quote */}
-      <section className="relative h-[50vh] sm:h-[55vh] lg:h-[60vh] overflow-hidden">
+      <section className="relative h-[50vh] sm:h-[55vh] lg:h-[60vh] overflow-hidden grain-overlay">
         <Image src="/images/events/spirit-of-burgas.jpg" alt="" fill className="object-cover" sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
         <div className="relative z-10 flex h-full items-center">
@@ -201,22 +201,27 @@ export default async function AboutPage({ params }: Props) {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="rounded-2xl bg-surface border border-border/50 p-8">
               <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-5">
-                <span className="text-2xl">☀️</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                </svg>
               </div>
               <h2 className="font-display text-2xl font-bold text-text-primary mb-3">{c.climateTitle}</h2>
               <p className="text-text-secondary leading-relaxed">{c.climateText}</p>
-              <Link href={`/${locale}/weather`} className="inline-flex items-center gap-1.5 mt-5 text-sm font-semibold text-primary hover:text-primary-dark transition-colors">
+              <Link href={`/${locale}/weather`} className="inline-flex items-center gap-1.5 mt-5 text-sm font-semibold text-primary hover:text-primary-dark transition-colors cursor-pointer">
                 {dict.weather.title}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
               </Link>
             </div>
             <div className="rounded-2xl bg-surface border border-border/50 p-8">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                <span className="text-2xl">✈️</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
+                </svg>
               </div>
               <h2 className="font-display text-2xl font-bold text-text-primary mb-3">{c.economyTitle}</h2>
               <p className="text-text-secondary leading-relaxed">{c.economyText}</p>
-              <Link href={`/${locale}/plan/transport`} className="inline-flex items-center gap-1.5 mt-5 text-sm font-semibold text-primary hover:text-primary-dark transition-colors">
+              <Link href={`/${locale}/plan/transport`} className="inline-flex items-center gap-1.5 mt-5 text-sm font-semibold text-primary hover:text-primary-dark transition-colors cursor-pointer">
                 {dict.categories.transport}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
               </Link>
@@ -229,7 +234,7 @@ export default async function AboutPage({ params }: Props) {
       <section className="bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="grid sm:grid-cols-3 gap-5">
-            <Link href={`/${locale}/explore`} className="group relative h-[260px] sm:h-[300px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow">
+            <Link href={`/${locale}/explore`} className="group relative h-[260px] sm:h-[300px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer">
               <Image src="/images/places/cathedral.jpg" alt="" fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]" sizes="(max-width: 640px) 100vw, 33vw" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/5" />
               <div className="absolute top-0 inset-x-0 h-1 bg-primary" />
@@ -241,7 +246,7 @@ export default async function AboutPage({ params }: Props) {
                 </span>
               </div>
             </Link>
-            <Link href={`/${locale}/plan`} className="group relative h-[260px] sm:h-[300px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow">
+            <Link href={`/${locale}/plan`} className="group relative h-[260px] sm:h-[300px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer">
               <Image src="/images/places/restaurant-ethno.jpg" alt="" fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]" sizes="(max-width: 640px) 100vw, 33vw" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/5" />
               <div className="absolute top-0 inset-x-0 h-1 bg-secondary" />
@@ -253,7 +258,7 @@ export default async function AboutPage({ params }: Props) {
                 </span>
               </div>
             </Link>
-            <Link href={`/${locale}/events`} className="group relative h-[260px] sm:h-[300px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow">
+            <Link href={`/${locale}/events`} className="group relative h-[260px] sm:h-[300px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer">
               <Image src="/images/events/opera-open.jpg" alt="" fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]" sizes="(max-width: 640px) 100vw, 33vw" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/5" />
               <div className="absolute top-0 inset-x-0 h-1 bg-accent" />

@@ -7,6 +7,7 @@ import { eventCategories } from "@/lib/categories";
 import { localize, formatDate } from "@/lib/utils";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Badge } from "@/components/shared/Badge";
+import { CategoryIcon } from "@/components/shared/CategoryIcon";
 
 interface FeaturedEventsProps {
   events: WebEvent[];
@@ -68,8 +69,8 @@ function HeroEventCard({ event, locale, dict }: { event: WebEvent; locale: Local
             sizes="(max-width: 1024px) 100vw, 58vw"
           />
         ) : (
-          <div className="flex h-full items-center justify-center bg-gradient-to-br from-surface-dim to-surface text-6xl">
-            {category.icon}
+          <div className="flex h-full items-center justify-center bg-gradient-to-br from-surface-dim to-surface">
+            <CategoryIcon name={category.icon} size={64} className="text-text-muted/40" />
           </div>
         )}
       </div>
@@ -137,8 +138,8 @@ function CompactEventCard({ event, locale, dict }: { event: WebEvent; locale: Lo
             sizes="180px"
           />
         ) : (
-          <div className="flex h-full items-center justify-center text-4xl">
-            {category.icon}
+          <div className="flex h-full items-center justify-center">
+            <CategoryIcon name={category.icon} size={40} className="text-text-muted/40" />
           </div>
         )}
       </div>

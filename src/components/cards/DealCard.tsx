@@ -18,7 +18,7 @@ export function DealCard({ deal, locale, dict }: DealCardProps) {
   return (
     <Link
       href={`/${locale}/deals/${deal.slug}`}
-      className="group block overflow-hidden rounded-[var(--radius-card)] bg-surface shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-1.5"
+      className="group block overflow-hidden rounded-[var(--radius-card)] bg-surface border border-border-light/60 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-1.5 cursor-pointer"
     >
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-surface-dim">
         {deal.imageUrl ? (

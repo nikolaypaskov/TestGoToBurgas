@@ -12,6 +12,8 @@ import { AIAssistantPromo } from "@/components/home/AIAssistantPromo";
 import { DealsHighlight } from "@/components/home/DealsHighlight";
 import { MustSeePlaces } from "@/components/home/MustSeePlaces";
 import { AboutSection } from "@/components/home/AboutSection";
+import { Testimonials } from "@/components/home/Testimonials";
+import { TripPlannerCTA } from "@/components/home/TripPlannerCTA";
 import { NewsletterCTA } from "@/components/home/NewsletterCTA";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 
@@ -41,15 +43,13 @@ export default async function HomePage({ params }: Props) {
 
   return (
     <>
-      {/* 1. Hero — full-viewport photo with Ken Burns */}
+      {/* 1. Hero — cinematic slideshow with Ken Burns */}
       <HeroSection locale={typedLocale} dict={dict} />
 
-      {/* 2. HighlightsStrip — overlapping hero bottom edge */}
+      {/* 2. Highlights — animated stat cards overlapping hero */}
       <section className="relative -mt-12 z-20 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal>
-            <HighlightsStrip locale={typedLocale} />
-          </ScrollReveal>
+          <HighlightsStrip locale={typedLocale} />
         </div>
       </section>
 
@@ -62,10 +62,12 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 4. Postcard — full-bleed photo with pull-quote */}
-      <PostcardSection locale={typedLocale} dict={dict} />
+      {/* 4. Postcard — cinematic full-bleed photo break */}
+      <ScrollReveal>
+        <PostcardSection locale={typedLocale} dict={dict} />
+      </ScrollReveal>
 
-      {/* 5. Explore Categories — warm sand background, photo cards */}
+      {/* 5. Explore Categories — photo card grid */}
       <section className="relative py-16 sm:py-24 bg-surface-dim overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
@@ -74,8 +76,8 @@ export default async function HomePage({ params }: Props) {
         </div>
       </section>
 
-      {/* 6. AI Assistant — full-width dark section with phone mockup */}
-      <section className="relative py-16 sm:py-24 bg-gradient-to-br from-surface-dark via-[#0E3555] to-primary-dark overflow-hidden">
+      {/* 6. AI Assistant — dark section with animated chat mockup */}
+      <section className="relative py-16 sm:py-24 bg-gradient-to-br from-surface-dark via-[#102C42] to-primary-dark overflow-hidden">
         <div className="absolute top-0 right-0 w-[350px] h-[350px] rounded-full bg-secondary/8 blur-[120px]" />
         <div className="absolute bottom-0 left-1/4 w-[250px] h-[250px] rounded-full bg-teal/8 blur-[100px]" />
         <ScrollReveal>
@@ -83,26 +85,40 @@ export default async function HomePage({ params }: Props) {
         </ScrollReveal>
       </section>
 
-      {/* 7. Deals — ocean blue background with featured spotlight */}
+      {/* 7. Deals — ocean blue with featured spotlight */}
       <section className="py-16 sm:py-24 bg-primary overflow-hidden">
         <ScrollReveal>
           <DealsHighlight deals={featuredDeals} locale={typedLocale} dict={dict} />
         </ScrollReveal>
       </section>
 
-      {/* 8. Must-See Places — horizontal scroll of tall portrait cards */}
+      {/* 8. Must-See Places — horizontal portrait scroll with nav arrows */}
       <section className="py-16 sm:py-24 bg-surface-warm">
         <ScrollReveal>
           <MustSeePlaces places={featuredPlaces} locale={typedLocale} dict={dict} />
         </ScrollReveal>
       </section>
 
-      {/* 9. About — full-bleed photo background with stats */}
+      {/* 9. Testimonials — traveler stories with aurora rating card */}
+      <section className="py-16 sm:py-24 bg-surface">
+        <ScrollReveal>
+          <Testimonials locale={typedLocale} />
+        </ScrollReveal>
+      </section>
+
+      {/* 10. Trip Planner CTA — step-by-step journey planner with aurora stats */}
+      <section className="py-16 sm:py-24 bg-surface-warm">
+        <ScrollReveal>
+          <TripPlannerCTA locale={typedLocale} />
+        </ScrollReveal>
+      </section>
+
+      {/* 11. About — full-bleed photo with glass stat cards */}
       <ScrollReveal>
         <AboutSection locale={typedLocale} dict={dict} />
       </ScrollReveal>
 
-      {/* 10. Newsletter — photo background with email form */}
+      {/* 10. Newsletter — gradient CTA */}
       <ScrollReveal>
         <NewsletterCTA locale={typedLocale} dict={dict} />
       </ScrollReveal>

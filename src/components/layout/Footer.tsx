@@ -119,8 +119,13 @@ export function Footer({ locale, dict }: FooterProps) {
           <p className="text-xs text-text-inverse/40">
             {dict.footer.copyright.replace("{year}", String(year))}
           </p>
-          <p className="text-xs text-text-inverse/30">
-            Burgas, Bulgaria 🇧🇬
+          <p className="text-xs text-text-inverse/30 flex items-center gap-1.5">
+            Burgas, Bulgaria
+            <svg width="16" height="12" viewBox="0 0 16 12" className="inline-block shrink-0">
+              <rect width="16" height="4" fill="#FFFFFF" />
+              <rect y="4" width="16" height="4" fill="#00966E" />
+              <rect y="8" width="16" height="4" fill="#D62612" />
+            </svg>
           </p>
         </div>
       </div>

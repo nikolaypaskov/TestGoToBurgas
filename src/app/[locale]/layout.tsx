@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Abril_Fatface, Inter } from "next/font/google";
+import { Playfair_Display, DM_Sans } from "next/font/google";
 import { isValidLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
-const abril = Abril_Fatface({
-  subsets: ["latin", "latin-ext"],
-  weight: "400",
-  style: "normal",
-  variable: "--font-abril",
+const playfair = Playfair_Display({
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
   display: "swap",
 });
 
-const inter = Inter({
-  subsets: ["latin", "latin-ext", "cyrillic"],
+const dmSans = DM_Sans({
+  subsets: ["latin", "latin-ext"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-inter",
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -45,7 +45,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const dict = await getDictionary(locale as Locale);
 
   return (
-    <html lang={locale} dir="ltr" className={`${abril.variable} ${inter.variable}`}>
+    <html lang={locale} dir="ltr" className={`${playfair.variable} ${dmSans.variable}`}>
       <body className="font-sans antialiased bg-surface-warm text-text-primary">
         <Header locale={locale as Locale} dict={dict} />
         <main className="min-h-screen">{children}</main>

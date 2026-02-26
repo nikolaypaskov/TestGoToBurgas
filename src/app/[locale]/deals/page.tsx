@@ -85,7 +85,7 @@ export default async function DealsPage({ params }: Props) {
                 return (
                   <Link
                     href={`/${typedLocale}/deals/${featured[0].slug}`}
-                    className="group lg:col-span-7 relative h-[360px] sm:h-[420px] lg:h-full lg:min-h-[460px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow"
+                    className="group lg:col-span-7 relative h-[360px] sm:h-[420px] lg:h-full lg:min-h-[460px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer"
                   >
                     <Image
                       src={featured[0].imageUrl}
@@ -248,7 +248,7 @@ export default async function DealsPage({ params }: Props) {
             {/* Explore teaser */}
             <Link
               href={`/${typedLocale}/explore`}
-              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow"
+              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer"
             >
               <Image
                 src="/images/places/central-beach.jpg"
@@ -281,7 +281,7 @@ export default async function DealsPage({ params }: Props) {
             {/* Events teaser */}
             <Link
               href={`/${typedLocale}/events`}
-              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow"
+              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer"
             >
               <Image
                 src="/images/events/opera-open.jpg"
@@ -314,7 +314,7 @@ export default async function DealsPage({ params }: Props) {
             {/* Plan teaser */}
             <Link
               href={`/${typedLocale}/plan`}
-              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow"
+              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer"
             >
               <Image
                 src="/images/places/alexandrovska.jpg"

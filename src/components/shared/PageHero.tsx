@@ -23,10 +23,10 @@ export function PageHero({
   backgroundImage,
   compact = false,
 }: PageHeroProps) {
-  const height = compact ? "min-h-[200px]" : "min-h-[280px]";
+  const height = compact ? "min-h-[220px]" : "min-h-[320px] sm:min-h-[360px]";
 
   return (
-    <section className={`relative ${height} flex items-end overflow-hidden`}>
+    <section className={`relative ${height} flex items-end overflow-hidden grain-overlay`}>
       {/* Background */}
       {backgroundImage ? (
         <>
@@ -38,7 +38,9 @@ export function PageHero({
             sizes="100vw"
             priority
           />
-          <div className="absolute inset-0 bg-black/50" />
+          {/* Multi-layer gradient for depth */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/15" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
         </>
       ) : (
         <>
@@ -46,19 +48,29 @@ export function PageHero({
             className="absolute inset-0"
             style={{ backgroundColor: accentColor }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-black/30 via-black/20 to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/25 to-black/55" />
         </>
       )}
 
+      {/* Decorative blur orb */}
+      <div className="absolute top-0 right-1/4 w-[300px] h-[200px] rounded-full bg-white/[0.04] blur-[100px] pointer-events-none" />
+
       {/* Content */}
-      <div className="relative z-10 w-full pb-10 pt-24">
+      <div className="relative z-10 w-full pb-12 pt-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Breadcrumbs items={breadcrumbs} theme="dark" />
-          <h1 className="mt-3 font-display text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+
+          {/* Decorative accent line */}
+          <div className="mt-4 mb-3 flex items-center gap-2">
+            <div className="h-px w-10 bg-white/25" />
+            <div className="h-1.5 w-1.5 rounded-full bg-secondary" />
+          </div>
+
+          <h1 className="font-display text-4xl font-bold text-white md:text-5xl lg:text-6xl leading-[1.1]">
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-2 max-w-2xl text-lg text-white/70">
+            <p className="mt-3 max-w-2xl text-base sm:text-lg text-white/60 leading-relaxed">
               {subtitle}
             </p>
           )}

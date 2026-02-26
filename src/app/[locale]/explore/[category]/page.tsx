@@ -51,12 +51,15 @@ export default async function ExploreCategoryPage({ params }: Props) {
     { label: categoryName },
   ];
 
+  const categoryMeta = exploreCategories[category];
+
   return (
     <>
       <PageHero
         title={categoryName}
+        subtitle={`${places.length} ${places.length === 1 ? "place" : "places"}`}
         breadcrumbs={breadcrumbs}
-        accentColor="var(--color-explore)"
+        backgroundImage={categoryMeta.image}
         compact
       />
       <div className="bg-surface-warm">

@@ -48,12 +48,15 @@ export default async function PlanCategoryPage({ params }: Props) {
     { label: categoryLabel },
   ];
 
+  const categoryMeta = planCategories[category as keyof typeof planCategories];
+
   return (
     <>
       <PageHero
         title={categoryLabel}
+        subtitle={`${services.length} ${services.length === 1 ? "service" : "services"}`}
         breadcrumbs={breadcrumbs}
-        accentColor="var(--color-plan)"
+        backgroundImage={categoryMeta?.image}
         compact
       />
       <div className="bg-surface-warm">

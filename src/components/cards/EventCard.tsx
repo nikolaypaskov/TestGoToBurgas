@@ -6,6 +6,7 @@ import type { WebEvent } from "@/lib/types";
 import { eventCategories } from "@/lib/categories";
 import { localize, formatDate } from "@/lib/utils";
 import { Badge } from "@/components/shared/Badge";
+import { CategoryIcon } from "@/components/shared/CategoryIcon";
 
 interface EventCardProps {
   event: WebEvent;
@@ -22,7 +23,7 @@ export function EventCard({ event, locale, dict }: EventCardProps) {
   return (
     <Link
       href={`/${locale}/events/${event.category}/${event.slug}`}
-      className="group block overflow-hidden rounded-[var(--radius-card)] bg-surface border border-border-light/60 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-1.5"
+      className="group block overflow-hidden rounded-[var(--radius-card)] bg-surface border border-border-light/60 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-1.5 cursor-pointer"
     >
       {/* Image container */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface-dim">
@@ -35,8 +36,8 @@ export function EventCard({ event, locale, dict }: EventCardProps) {
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         ) : (
-          <div className="flex h-full items-center justify-center bg-gradient-to-br from-surface-dim to-surface text-5xl">
-            {category.icon}
+          <div className="flex h-full items-center justify-center bg-gradient-to-br from-surface-dim to-surface">
+            <CategoryIcon name={category.icon} size={48} className="text-text-muted/40" />
           </div>
         )}
         {/* Bottom gradient */}

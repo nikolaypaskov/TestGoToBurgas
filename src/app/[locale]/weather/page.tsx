@@ -29,14 +29,14 @@ const avgTemp =   [ 3,  4,  7, 12, 17, 22, 25, 25, 21, 15, 10,  5];
 const waterTemp = [ 7,  6,  7, 10, 16, 22, 24, 25, 22, 18, 14, 10];
 const sunHours =  [ 3,  4,  5,  7,  9, 10, 11, 10,  8,  6,  4,  3];
 
-/* Temp → color mapping (cold blue → warm gold → hot coral) */
+/* Temp → color mapping (cold navy → aquamarine → warm gold → hot terracotta) */
 function tempColor(t: number): string {
-  if (t <= 5) return "#3A9AD0";
-  if (t <= 10) return "#50D0B5";
-  if (t <= 15) return "#7BC67E";
-  if (t <= 20) return "#E8A838";
-  if (t <= 23) return "#E88A38";
-  return "#E8685A";
+  if (t <= 5) return "#3D7A9E";
+  if (t <= 10) return "#5FB49C";
+  if (t <= 15) return "#7DC8B4";
+  if (t <= 20) return "#D4A843";
+  if (t <= 23) return "#D4795E";
+  return "#C75B39";
 }
 
 /* ── i18n Labels ───────────────────────────────────────── */
@@ -70,50 +70,67 @@ const labels = {
   },
 };
 
+/* Season icon type for SVG rendering */
+type SeasonIcon = "spring" | "summer" | "autumn" | "winter";
+
 const seasonData = {
   bg: [
     { key: "spring", name: "Пролет", months: "Март – Май", range: "7–17°C",
       desc: "Температурите се покачват, цветята разцъфтяват в Морската градина. Идеално за разходки и посещения на музеи. Фестивалът Флора Бургас е през май.",
-      icon: "🌸", gradient: "from-emerald-400/80 to-teal/60" },
+      icon: "spring" as SeasonIcon, gradient: "from-emerald-400/80 to-teal/60" },
     { key: "summer", name: "Лято", months: "Юни – Август", range: "22–25°C",
       desc: "Перфектно време за плаж — топло и слънчево с водна температура 22–25°C. Фестивали, открити концерти и нощен живот. Най-натовареният сезон.",
-      icon: "☀️", gradient: "from-secondary/80 to-accent/60" },
+      icon: "summer" as SeasonIcon, gradient: "from-secondary/80 to-accent/60" },
     { key: "autumn", name: "Есен", months: "Септември – Ноември", range: "10–21°C",
       desc: "Приятни температури за разходки. По-малко туристи, отлични цени. Бургас Фуд Фест и винени фестивали.",
-      icon: "🍂", gradient: "from-orange-500/80 to-secondary-dark/60" },
+      icon: "autumn" as SeasonIcon, gradient: "from-orange-500/80 to-secondary-dark/60" },
     { key: "winter", name: "Зима", months: "Декември – Февруари", range: "3–5°C",
       desc: "Меки зими с рядък сняг. Коледни базари в центъра. Идеално за спа в Акве Калиде и културни събития.",
-      icon: "❄️", gradient: "from-primary/80 to-primary-dark/60" },
+      icon: "winter" as SeasonIcon, gradient: "from-primary/80 to-primary-dark/60" },
   ],
   en: [
     { key: "spring", name: "Spring", months: "March – May", range: "7–17°C",
       desc: "Temperatures rise, flowers bloom in the Sea Garden. Ideal for walks and museum visits. Flora Burgas Festival is in May.",
-      icon: "🌸", gradient: "from-emerald-400/80 to-teal/60" },
+      icon: "spring" as SeasonIcon, gradient: "from-emerald-400/80 to-teal/60" },
     { key: "summer", name: "Summer", months: "June – August", range: "22–25°C",
       desc: "Perfect beach weather — warm and sunny with water temperatures of 22–25°C. Festivals, open-air concerts, and nightlife. Peak season.",
-      icon: "☀️", gradient: "from-secondary/80 to-accent/60" },
+      icon: "summer" as SeasonIcon, gradient: "from-secondary/80 to-accent/60" },
     { key: "autumn", name: "Autumn", months: "September – November", range: "10–21°C",
       desc: "Pleasant temperatures for sightseeing. Fewer tourists, excellent prices. Burgas Food Fest and wine festivals.",
-      icon: "🍂", gradient: "from-orange-500/80 to-secondary-dark/60" },
+      icon: "autumn" as SeasonIcon, gradient: "from-orange-500/80 to-secondary-dark/60" },
     { key: "winter", name: "Winter", months: "December – February", range: "3–5°C",
       desc: "Mild winters with rare snow. Christmas markets in the center. Ideal for spa at Aquae Calidae and cultural events.",
-      icon: "❄️", gradient: "from-primary/80 to-primary-dark/60" },
+      icon: "winter" as SeasonIcon, gradient: "from-primary/80 to-primary-dark/60" },
   ],
   ru: [
     { key: "spring", name: "Весна", months: "Март – Май", range: "7–17°C",
       desc: "Температура растёт, цветы распускаются в Приморском парке. Идеально для прогулок и посещения музеев. Фестиваль Флора Бургас в мае.",
-      icon: "🌸", gradient: "from-emerald-400/80 to-teal/60" },
+      icon: "spring" as SeasonIcon, gradient: "from-emerald-400/80 to-teal/60" },
     { key: "summer", name: "Лето", months: "Июнь – Август", range: "22–25°C",
       desc: "Идеальная пляжная погода — тепло и солнечно, температура воды 22–25°C. Фестивали, концерты под открытым небом и ночная жизнь.",
-      icon: "☀️", gradient: "from-secondary/80 to-accent/60" },
+      icon: "summer" as SeasonIcon, gradient: "from-secondary/80 to-accent/60" },
     { key: "autumn", name: "Осень", months: "Сентябрь – Ноябрь", range: "10–21°C",
       desc: "Приятная температура для экскурсий. Меньше туристов, отличные цены. Бургас Фуд Фест и винные фестивали.",
-      icon: "🍂", gradient: "from-orange-500/80 to-secondary-dark/60" },
+      icon: "autumn" as SeasonIcon, gradient: "from-orange-500/80 to-secondary-dark/60" },
     { key: "winter", name: "Зима", months: "Декабрь – Февраль", range: "3–5°C",
       desc: "Мягкие зимы с редким снегом. Рождественские ярмарки в центре. Идеально для спа в Акве Калиде.",
-      icon: "❄️", gradient: "from-primary/80 to-primary-dark/60" },
+      icon: "winter" as SeasonIcon, gradient: "from-primary/80 to-primary-dark/60" },
   ],
 };
+
+function SeasonSvgIcon({ type }: { type: SeasonIcon }) {
+  const p = { width: 32, height: 32, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, className: "text-white/90" };
+  switch (type) {
+    case "spring":
+      return <svg {...p}><path d="M12 22c0-5.523-4.477-10-10-10 5.523 0 10-4.477 10-10 0 5.523 4.477 10 10 10-5.523 0-10 4.477-10 10z" /><circle cx="12" cy="12" r="3" /></svg>;
+    case "summer":
+      return <svg {...p}><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" /></svg>;
+    case "autumn":
+      return <svg {...p}><path d="M11 20A7 7 0 019.8 6.9C15.5 4.9 17 3.5 17 3.5s-.3 2.5 2.8 6.5A7 7 0 0111 20z" /><path d="M11 13V7.5" /><path d="M8 16l3-3" /><path d="M14 10l-3 3" /></svg>;
+    case "winter":
+      return <svg {...p}><line x1="12" y1="2" x2="12" y2="22" /><line x1="2" y1="12" x2="22" y2="12" /><line x1="4.93" y1="4.93" x2="19.07" y2="19.07" /><line x1="19.07" y1="4.93" x2="4.93" y2="19.07" /><circle cx="12" cy="12" r="3" /></svg>;
+  }
+}
 
 export default async function WeatherPage({ params }: Props) {
   const { locale } = await params;
@@ -145,7 +162,7 @@ export default async function WeatherPage({ params }: Props) {
       {/* ─── RIGHT NOW ─── Current month feature card */}
       <section className="bg-surface-warm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-surface-dark via-[#0E3555] to-primary-dark p-8 md:p-12 text-white">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-surface-dark via-[#102C42] to-primary-dark p-8 md:p-12 text-white">
             {/* Decorative glows */}
             <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-secondary/10 blur-[100px] -translate-y-1/3 translate-x-1/4" />
             <div className="absolute bottom-0 left-0 w-[200px] h-[200px] rounded-full bg-teal/10 blur-[80px] translate-y-1/3 -translate-x-1/4" />
@@ -330,9 +347,7 @@ export default async function WeatherPage({ params }: Props) {
 
                 <div className="relative">
                   <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <span className="text-3xl md:text-4xl">{season.icon}</span>
-                    </div>
+                    <SeasonSvgIcon type={season.icon} />
                     <span className="font-display text-2xl md:text-3xl font-bold text-white/90">
                       {season.range}
                     </span>
@@ -374,7 +389,7 @@ export default async function WeatherPage({ params }: Props) {
               </p>
               <Link
                 href={`/${locale}/plan`}
-                className="inline-flex items-center gap-2.5 rounded-full bg-secondary px-7 py-3.5 text-sm font-semibold text-surface-dark transition-all hover:bg-secondary-light hover:shadow-lg"
+                className="inline-flex items-center gap-2.5 rounded-full bg-secondary px-7 py-3.5 text-sm font-semibold text-surface-dark transition-all hover:bg-secondary-light hover:shadow-lg cursor-pointer"
               >
                 {l.planTrip}
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

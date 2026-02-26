@@ -261,7 +261,7 @@ export default async function ContactPage({ params }: Props) {
             {/* Explore teaser */}
             <Link
               href={`/${typedLocale}/explore`}
-              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow"
+              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer"
             >
               <Image
                 src="/images/places/sea-garden.jpg"
@@ -294,7 +294,7 @@ export default async function ContactPage({ params }: Props) {
             {/* Events teaser */}
             <Link
               href={`/${typedLocale}/events`}
-              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow"
+              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer"
             >
               <Image
                 src="/images/events/spirit-of-burgas.jpg"
@@ -327,7 +327,7 @@ export default async function ContactPage({ params }: Props) {
             {/* Plan teaser */}
             <Link
               href={`/${typedLocale}/plan`}
-              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow"
+              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer"
             >
               <Image
                 src="/images/places/hotel-bulgaria.jpg"

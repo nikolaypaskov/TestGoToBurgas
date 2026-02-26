@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CategoryIcon } from "@/components/shared/CategoryIcon";
 
 interface CategoryCardProps {
   slug: string;
@@ -15,7 +16,7 @@ export function CategoryCard({ icon, color, label, href, image, count }: Categor
   return (
     <Link
       href={href}
-      className="group relative flex flex-col items-center justify-end overflow-hidden rounded-[var(--radius-card)] aspect-[4/3] shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-1"
+      className="group relative flex flex-col items-center justify-end overflow-hidden rounded-[var(--radius-card)] aspect-[4/3] shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-1.5 cursor-pointer"
     >
       {/* Photo background */}
       {image ? (
@@ -27,12 +28,12 @@ export function CategoryCard({ icon, color, label, href, image, count }: Categor
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
       ) : (
-        /* Gradient fallback when no image — show large emoji centered */
+        /* Gradient fallback when no image — show SVG icon centered */
         <div
           className="absolute inset-0 flex items-center justify-center"
           style={{ background: `linear-gradient(135deg, ${color}20, ${color}40)` }}
         >
-          <span className="text-5xl opacity-60">{icon}</span>
+          <CategoryIcon name={icon} size={48} className="opacity-60" />
         </div>
       )}
 

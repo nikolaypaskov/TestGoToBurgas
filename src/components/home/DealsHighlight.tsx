@@ -29,11 +29,11 @@ export function DealsHighlight({ deals, locale, dict }: DealsHighlightProps) {
           theme="dark"
         />
 
-        {/* Featured deal — large editorial card */}
+        {/* Featured deal — cinematic editorial card */}
         <FeaturedDealCard deal={featured} locale={locale} dict={dict} />
       </div>
 
-      {/* Remaining deals — horizontal cinema scroll */}
+      {/* Remaining deals — horizontal scroll */}
       {restDeals.length > 0 && (
         <div className="mt-8 flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 sm:px-6 lg:px-8 pb-4">
           {restDeals.map((deal) => (
@@ -47,7 +47,15 @@ export function DealsHighlight({ deals, locale, dict }: DealsHighlightProps) {
   );
 }
 
-function FeaturedDealCard({ deal, locale, dict }: { deal: WebDeal; locale: Locale; dict: Dictionary }) {
+function FeaturedDealCard({
+  deal,
+  locale,
+  dict,
+}: {
+  deal: WebDeal;
+  locale: Locale;
+  dict: Dictionary;
+}) {
   const title = localize(deal, "title", locale);
   const description = localize(deal, "description", locale);
   const savings = discountPercent(deal.originalPrice, deal.discountPrice);
@@ -55,10 +63,10 @@ function FeaturedDealCard({ deal, locale, dict }: { deal: WebDeal; locale: Local
   return (
     <Link
       href={`/${locale}/deals/${deal.slug}`}
-      className="group relative block overflow-hidden rounded-[var(--radius-card)] bg-white/8 border border-white/10 transition-all duration-300 hover:bg-white/12 hover:border-white/20"
+      className="group relative block overflow-hidden rounded-[var(--radius-card)] bg-white/6 border border-white/10 transition-all duration-300 hover:bg-white/10 hover:border-white/18 cursor-pointer"
     >
       <div className="grid lg:grid-cols-2">
-        {/* Image side */}
+        {/* Image */}
         <div className="relative h-[240px] lg:h-[320px] overflow-hidden">
           {deal.imageUrl ? (
             <Image
@@ -82,18 +90,18 @@ function FeaturedDealCard({ deal, locale, dict }: { deal: WebDeal; locale: Local
           )}
         </div>
 
-        {/* Text side */}
+        {/* Text */}
         <div className="p-6 lg:p-8 flex flex-col justify-center">
           <h3 className="font-display text-2xl lg:text-3xl font-bold text-white leading-tight">
             {title}
           </h3>
-          <p className="mt-3 text-sm text-white/50 leading-relaxed line-clamp-3">
+          <p className="mt-3 text-sm text-white/45 leading-relaxed line-clamp-3">
             {description}
           </p>
 
           {/* Pricing */}
           <div className="mt-5 flex items-baseline gap-3">
-            <span className="text-white/40 line-through text-sm">
+            <span className="text-white/35 line-through text-sm">
               {formatPrice(deal.originalPrice, deal.currency, locale)}
             </span>
             <span className="font-display text-2xl font-bold text-secondary">

@@ -77,7 +77,7 @@ export default async function EventsPage({ params }: Props) {
               {featured[0] && (
                 <Link
                   href={`/${typedLocale}/events/${featured[0].category}/${featured[0].slug}`}
-                  className="group lg:col-span-7 relative h-[360px] sm:h-[420px] lg:h-full lg:min-h-[480px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow"
+                  className="group lg:col-span-7 relative h-[360px] sm:h-[420px] lg:h-full lg:min-h-[480px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer"
                 >
                   <Image
                     src={featured[0].imageUrl}
@@ -241,7 +241,7 @@ export default async function EventsPage({ params }: Props) {
             {/* Explore teaser */}
             <Link
               href={`/${typedLocale}/explore`}
-              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow"
+              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer"
             >
               <Image
                 src="/images/places/sea-garden.jpg"
@@ -274,7 +274,7 @@ export default async function EventsPage({ params }: Props) {
             {/* Plan teaser */}
             <Link
               href={`/${typedLocale}/plan`}
-              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow"
+              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer"
             >
               <Image
                 src="/images/places/alexandrovska.jpg"
@@ -307,7 +307,7 @@ export default async function EventsPage({ params }: Props) {
             {/* Deals teaser */}
             <Link
               href={`/${typedLocale}/deals`}
-              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow"
+              className="group relative h-[260px] sm:h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-shadow cursor-pointer"
             >
               <Image
                 src="/images/places/sea-casino.jpg"
