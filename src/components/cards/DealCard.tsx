@@ -18,16 +18,16 @@ export function DealCard({ deal, locale, dict }: DealCardProps) {
   return (
     <Link
       href={`/${locale}/deals/${deal.slug}`}
-      className="group block overflow-hidden rounded-[var(--radius-card)] bg-surface border border-border-light/60 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-1.5 cursor-pointer"
+      className="group block overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] cursor-pointer"
     >
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-surface-dim">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface-dim">
         {deal.imageUrl ? (
           <Image
             src={deal.imageUrl}
             alt={title}
             fill
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.08]"
-            sizes="400px"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
           />
         ) : (
           <div className="flex h-full items-center justify-center bg-gradient-to-br from-teal/10 to-teal/5 text-5xl text-teal">
@@ -36,8 +36,10 @@ export function DealCard({ deal, locale, dict }: DealCardProps) {
         )}
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent" />
         {savings > 0 && (
-          <div className="absolute right-4 top-4 flex items-center justify-center w-14 h-14 rounded-full bg-accent text-sm font-bold text-white shadow-lg">
-            -{savings}%
+          <div className="absolute right-4 top-4">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-accent-light bg-black/30 backdrop-blur-sm px-2.5 py-1">
+              -{savings}%
+            </span>
           </div>
         )}
       </div>

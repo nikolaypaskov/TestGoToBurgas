@@ -5,7 +5,6 @@ import type { Dictionary } from "@/i18n/get-dictionary";
 import type { WebPlace } from "@/lib/types";
 import { exploreCategories, planCategories } from "@/lib/categories";
 import { localize } from "@/lib/utils";
-import { Badge } from "@/components/shared/Badge";
 
 interface PlaceCardProps {
   place: WebPlace;
@@ -18,18 +17,14 @@ export function PlaceCard({ place, locale, dict, section }: PlaceCardProps) {
   const title = localize(place, "title", locale);
   const address = localize(place, "address", locale);
   const categorySlug = place.category;
-  const categoryMeta =
-    section === "explore"
-      ? exploreCategories[categorySlug as keyof typeof exploreCategories]
-      : planCategories[categorySlug as keyof typeof planCategories];
   const categoryLabel = dict.categories[categorySlug as keyof typeof dict.categories] ?? categorySlug;
 
   return (
     <Link
       href={`/${locale}/${section}/${categorySlug}/${place.slug}`}
-      className="group block overflow-hidden rounded-[var(--radius-card)] bg-surface border border-border-light/60 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-1.5 cursor-pointer"
+      className="group block overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] cursor-pointer"
     >
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface-dim">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface-dim">
         {place.imageUrl ? (
           <Image
             src={place.imageUrl}
@@ -47,7 +42,9 @@ export function PlaceCard({ place, locale, dict, section }: PlaceCardProps) {
         )}
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent" />
         <div className="absolute left-4 top-4">
-          <Badge label={categoryLabel} color={categoryMeta?.color} />
+          <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/80 bg-black/25 backdrop-blur-sm px-2.5 py-1">
+            {categoryLabel}
+          </span>
         </div>
       </div>
       <div className="p-5">

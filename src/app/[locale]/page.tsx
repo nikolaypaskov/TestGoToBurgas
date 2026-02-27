@@ -11,9 +11,9 @@ import { ExploreCategories } from "@/components/home/ExploreCategories";
 import { AIAssistantPromo } from "@/components/home/AIAssistantPromo";
 import { DealsHighlight } from "@/components/home/DealsHighlight";
 import { MustSeePlaces } from "@/components/home/MustSeePlaces";
-import { AboutSection } from "@/components/home/AboutSection";
 import { Testimonials } from "@/components/home/Testimonials";
 import { TripPlannerCTA } from "@/components/home/TripPlannerCTA";
+import { AboutSection } from "@/components/home/AboutSection";
 import { NewsletterCTA } from "@/components/home/NewsletterCTA";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 
@@ -46,15 +46,15 @@ export default async function HomePage({ params }: Props) {
       {/* 1. Hero — cinematic slideshow with Ken Burns */}
       <HeroSection locale={typedLocale} dict={dict} />
 
-      {/* 2. Highlights — animated stat cards overlapping hero */}
-      <section className="relative -mt-12 z-20 pb-8">
+      {/* 2. Editor's Picks — filmstrip overlapping hero */}
+      <section className="relative -mt-12 z-20 pb-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <HighlightsStrip locale={typedLocale} />
         </div>
       </section>
 
       {/* 3. Featured Events — editorial magazine grid */}
-      <section className="py-16 sm:py-24 bg-surface">
+      <section className="py-14 sm:py-20 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <FeaturedEvents events={featuredEvents} locale={typedLocale} dict={dict} />
@@ -67,58 +67,50 @@ export default async function HomePage({ params }: Props) {
         <PostcardSection locale={typedLocale} dict={dict} />
       </ScrollReveal>
 
-      {/* 5. Explore Categories — photo card grid */}
-      <section className="relative py-16 sm:py-24 bg-surface-dim overflow-hidden">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 5. Explore Categories — editorial mosaic */}
+      <section className="py-14 sm:py-20 bg-surface-dim overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <ExploreCategories locale={typedLocale} dict={dict} />
           </ScrollReveal>
         </div>
       </section>
 
-      {/* 6. AI Assistant — dark section with animated chat mockup */}
-      <section className="relative py-16 sm:py-24 bg-gradient-to-br from-surface-dark via-[#102C42] to-primary-dark overflow-hidden">
-        <div className="absolute top-0 right-0 w-[350px] h-[350px] rounded-full bg-secondary/8 blur-[120px]" />
-        <div className="absolute bottom-0 left-1/4 w-[250px] h-[250px] rounded-full bg-teal/8 blur-[100px]" />
-        <ScrollReveal>
-          <AIAssistantPromo locale={typedLocale} />
-        </ScrollReveal>
-      </section>
+      {/* 6. AI Assistant — full-bleed editorial section */}
+      <ScrollReveal>
+        <AIAssistantPromo locale={typedLocale} />
+      </ScrollReveal>
 
       {/* 7. Deals — ocean blue with featured spotlight */}
-      <section className="py-16 sm:py-24 bg-primary overflow-hidden">
+      <section className="py-14 sm:py-20 bg-primary overflow-hidden">
         <ScrollReveal>
           <DealsHighlight deals={featuredDeals} locale={typedLocale} dict={dict} />
         </ScrollReveal>
       </section>
 
-      {/* 8. Must-See Places — horizontal portrait scroll with nav arrows */}
-      <section className="py-16 sm:py-24 bg-surface-warm">
+      {/* 8. Must-See Places — magazine portraits */}
+      <section className="py-14 sm:py-20 bg-surface-warm">
         <ScrollReveal>
           <MustSeePlaces places={featuredPlaces} locale={typedLocale} dict={dict} />
         </ScrollReveal>
       </section>
 
-      {/* 9. Testimonials — traveler stories with aurora rating card */}
-      <section className="py-16 sm:py-24 bg-surface">
-        <ScrollReveal>
-          <Testimonials locale={typedLocale} />
-        </ScrollReveal>
-      </section>
+      {/* 9. Testimonials — full-bleed pull quotes */}
+      <ScrollReveal>
+        <Testimonials locale={typedLocale} />
+      </ScrollReveal>
 
-      {/* 10. Trip Planner CTA — step-by-step journey planner with aurora stats */}
-      <section className="py-16 sm:py-24 bg-surface-warm">
-        <ScrollReveal>
-          <TripPlannerCTA locale={typedLocale} />
-        </ScrollReveal>
-      </section>
+      {/* 10. Trip Planner — full-bleed inspirational CTA */}
+      <ScrollReveal>
+        <TripPlannerCTA locale={typedLocale} />
+      </ScrollReveal>
 
-      {/* 11. About — full-bleed photo with glass stat cards */}
+      {/* 11. About — full-bleed photo with stats */}
       <ScrollReveal>
         <AboutSection locale={typedLocale} dict={dict} />
       </ScrollReveal>
 
-      {/* 10. Newsletter — gradient CTA */}
+      {/* 12. Newsletter — editorial CTA */}
       <ScrollReveal>
         <NewsletterCTA locale={typedLocale} dict={dict} />
       </ScrollReveal>

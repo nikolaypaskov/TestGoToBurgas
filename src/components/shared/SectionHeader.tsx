@@ -6,7 +6,7 @@ interface SectionHeaderProps {
   viewAllHref?: string;
   viewAllLabel?: string;
   align?: "left" | "center";
-  variant?: "default" | "accent-underline" | "center-large" | "gradient-text";
+  variant?: "default" | "accent-underline" | "center-large" | "gradient-text" | "editorial";
   theme?: "light" | "dark";
 }
 
@@ -29,6 +29,8 @@ export function SectionHeader({
         return "font-display text-3xl font-bold md:text-4xl lg:text-[42px] leading-tight text-gradient-primary";
       case "center-large":
         return `font-display text-4xl font-bold md:text-5xl lg:text-6xl leading-tight ${textColor}`;
+      case "editorial":
+        return `font-display text-3xl font-bold md:text-4xl lg:text-[42px] leading-tight ${textColor}`;
       default:
         return `font-display text-3xl font-bold md:text-4xl lg:text-[42px] leading-tight ${textColor}`;
     }
@@ -37,6 +39,9 @@ export function SectionHeader({
   return (
     <div className={`mb-10 ${align === "center" ? "text-center" : "flex items-end justify-between"}`}>
       <div>
+        {variant === "editorial" && (
+          <div className={`h-[2px] w-10 mb-4 ${theme === "dark" ? "bg-secondary" : "bg-secondary"}`} />
+        )}
         <h2 className={titleClass}>
           {title}
         </h2>

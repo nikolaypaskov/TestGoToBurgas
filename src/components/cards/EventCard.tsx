@@ -5,7 +5,6 @@ import type { Dictionary } from "@/i18n/get-dictionary";
 import type { WebEvent } from "@/lib/types";
 import { eventCategories } from "@/lib/categories";
 import { localize, formatDate } from "@/lib/utils";
-import { Badge } from "@/components/shared/Badge";
 import { CategoryIcon } from "@/components/shared/CategoryIcon";
 
 interface EventCardProps {
@@ -23,10 +22,10 @@ export function EventCard({ event, locale, dict }: EventCardProps) {
   return (
     <Link
       href={`/${locale}/events/${event.category}/${event.slug}`}
-      className="group block overflow-hidden rounded-[var(--radius-card)] bg-surface border border-border-light/60 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-1.5 cursor-pointer"
+      className="group block overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] cursor-pointer"
     >
       {/* Image container */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface-dim">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-surface-dim">
         {event.imageUrl ? (
           <Image
             src={event.imageUrl}
@@ -41,10 +40,12 @@ export function EventCard({ event, locale, dict }: EventCardProps) {
           </div>
         )}
         {/* Bottom gradient */}
-        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-        {/* Category badge */}
+        <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        {/* Category label */}
         <div className="absolute left-4 top-4">
-          <Badge label={categoryLabel} color={category.color} />
+          <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/80 bg-black/25 backdrop-blur-sm px-2.5 py-1">
+            {categoryLabel}
+          </span>
         </div>
         {/* Date at bottom */}
         <div className="absolute left-4 bottom-4 right-4 flex items-end justify-between">
@@ -52,11 +53,11 @@ export function EventCard({ event, locale, dict }: EventCardProps) {
             {formatDate(event.date, locale)}
           </span>
           {event.isFree ? (
-            <span className="rounded-full bg-teal/90 px-3 py-1 text-[11px] font-bold text-white uppercase tracking-wide">
+            <span className="text-[10px] font-semibold text-teal-light uppercase tracking-[0.1em]">
               {dict.events.free}
             </span>
           ) : event.price ? (
-            <span className="rounded-full bg-white/90 backdrop-blur-sm px-3 py-1 text-[11px] font-bold text-text-primary">
+            <span className="text-[12px] font-semibold text-white/90">
               {new Intl.NumberFormat(locale === "bg" ? "bg-BG" : locale === "ru" ? "ru-RU" : "en-US", {
                 style: "currency",
                 currency: event.priceCurrency || "BGN",

@@ -6,7 +6,6 @@ import type { WebEvent } from "@/lib/types";
 import { eventCategories } from "@/lib/categories";
 import { localize, formatDate } from "@/lib/utils";
 import { SectionHeader } from "@/components/shared/SectionHeader";
-import { Badge } from "@/components/shared/Badge";
 import { CategoryIcon } from "@/components/shared/CategoryIcon";
 
 interface FeaturedEventsProps {
@@ -28,7 +27,7 @@ export function FeaturedEvents({ events, locale, dict }: FeaturedEventsProps) {
         subtitle={dict.home.featuredEventsDesc}
         viewAllHref={`/${locale}/events`}
         viewAllLabel={dict.home.viewAll}
-        variant="accent-underline"
+        variant="editorial"
       />
 
       <div className="grid gap-5 lg:grid-cols-12">
@@ -38,7 +37,7 @@ export function FeaturedEvents({ events, locale, dict }: FeaturedEventsProps) {
         </div>
 
         {/* Side event stack — 5/12 width, 3 horizontal cards */}
-        <div className="lg:col-span-5 flex flex-col gap-5">
+        <div className="lg:col-span-5 flex flex-col gap-px bg-border-light/40">
           {sideEvents.map((event) => (
             <CompactEventCard key={event.id} event={event} locale={locale} dict={dict} />
           ))}
@@ -57,7 +56,7 @@ function HeroEventCard({ event, locale, dict }: { event: WebEvent; locale: Local
   return (
     <Link
       href={`/${locale}/events/${event.category}/${event.slug}`}
-      className="group relative block overflow-hidden rounded-[var(--radius-card)] h-full min-h-[400px] lg:min-h-[480px] shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)]"
+      className="group relative block overflow-hidden h-full min-h-[300px] sm:min-h-[400px] lg:min-h-[480px]"
     >
       <div className="absolute inset-0">
         {event.imageUrl ? (
@@ -78,9 +77,11 @@ function HeroEventCard({ event, locale, dict }: { event: WebEvent; locale: Local
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
 
-      {/* Category badge — top left */}
+      {/* Editorial label — top left */}
       <div className="absolute left-5 top-5">
-        <Badge label={categoryLabel} color={category.color} />
+        <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/70 bg-black/30 backdrop-blur-sm px-3 py-1.5">
+          {categoryLabel}
+        </span>
       </div>
 
       {/* Bottom content */}
@@ -94,7 +95,7 @@ function HeroEventCard({ event, locale, dict }: { event: WebEvent; locale: Local
           </svg>
           {formatDate(event.date, locale)}
         </p>
-        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-white leading-tight">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white leading-tight">
           {title}
         </h3>
         {location && (
@@ -107,7 +108,7 @@ function HeroEventCard({ event, locale, dict }: { event: WebEvent; locale: Local
           </p>
         )}
         {event.isFree && (
-          <span className="mt-3 inline-block rounded-full bg-teal/90 px-3 py-1 text-[11px] font-bold text-white uppercase tracking-wide">
+          <span className="mt-3 inline-block text-[10px] font-semibold text-teal-light uppercase tracking-[0.15em]">
             {dict.events.free}
           </span>
         )}
@@ -125,10 +126,10 @@ function CompactEventCard({ event, locale, dict }: { event: WebEvent; locale: Lo
   return (
     <Link
       href={`/${locale}/events/${event.category}/${event.slug}`}
-      className="group flex overflow-hidden rounded-[var(--radius-card)] bg-surface border border-border-light/60 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-0.5"
+      className="group flex overflow-hidden bg-surface transition-colors duration-200 hover:bg-surface-dim"
     >
       {/* Image — left side */}
-      <div className="relative w-32 sm:w-40 shrink-0 overflow-hidden bg-surface-dim">
+      <div className="relative w-24 sm:w-32 md:w-40 shrink-0 overflow-hidden bg-surface-dim">
         {event.imageUrl ? (
           <Image
             src={event.imageUrl}
@@ -145,11 +146,11 @@ function CompactEventCard({ event, locale, dict }: { event: WebEvent; locale: Lo
       </div>
 
       {/* Text — right side */}
-      <div className="flex flex-col justify-center p-4 sm:p-5 min-w-0">
-        <div className="mb-2">
-          <Badge label={categoryLabel} color={category.color} />
-        </div>
-        <h3 className="line-clamp-2 text-[15px] font-semibold text-text-primary leading-snug group-hover:text-primary transition-colors">
+      <div className="flex flex-col justify-center p-3 sm:p-4 md:p-5 min-w-0">
+        <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.12em] text-text-muted mb-1">
+          {categoryLabel}
+        </span>
+        <h3 className="line-clamp-2 text-[13px] sm:text-[15px] font-semibold text-text-primary leading-snug group-hover:text-primary transition-colors">
           {title}
         </h3>
         <p className="mt-1.5 flex items-center gap-1.5 text-xs text-text-muted">

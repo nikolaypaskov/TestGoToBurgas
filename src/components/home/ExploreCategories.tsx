@@ -12,6 +12,18 @@ interface ExploreCategoriesProps {
   dict: Dictionary;
 }
 
+// Irregular grid sizes — col-span-2 only on sm+ to avoid oversized items on mobile
+const gridSizes = [
+  "sm:col-span-2 sm:row-span-2",     // large featured (regular on mobile)
+  "col-span-1 row-span-1",           // small
+  "col-span-1 row-span-1",           // small
+  "sm:col-span-2 row-span-1",        // panoramic wide (regular on mobile)
+  "col-span-1 row-span-1",           // small
+  "col-span-1 row-span-1",           // small
+  "col-span-1 row-span-1",           // small
+  "col-span-1 row-span-1",           // small
+];
+
 export function ExploreCategories({ locale, dict }: ExploreCategoriesProps) {
   const categories = Object.entries(exploreCategories) as [
     ExploreCategory,
@@ -24,20 +36,15 @@ export function ExploreCategories({ locale, dict }: ExploreCategoriesProps) {
         title={dict.home.exploreTitle}
         subtitle={dict.home.exploreDesc}
         align="center"
-        variant="gradient-text"
+        variant="editorial"
       />
 
-      {/* Responsive grid: first two items span wider on large screens */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 sm:gap-4 lg:gap-5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1 sm:gap-1.5 md:gap-2 auto-rows-[130px] sm:auto-rows-[160px] md:auto-rows-[200px]">
         {categories.map(([slug, meta], i) => (
           <Link
             key={slug}
             href={`/${locale}/explore/${slug}`}
-            className={`group relative flex flex-col items-center justify-end overflow-hidden rounded-[var(--radius-card)] shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-1 cursor-pointer ${
-              i < 2
-                ? "aspect-[4/3] sm:aspect-[3/2] md:col-span-2 md:aspect-[16/9] lg:col-span-2"
-                : "aspect-[4/3]"
-            }`}
+            className={`group relative overflow-hidden cursor-pointer ${gridSizes[i] || "col-span-1 row-span-1"}`}
           >
             {/* Photo */}
             {meta.image ? (
@@ -58,17 +65,11 @@ export function ExploreCategories({ locale, dict }: ExploreCategoriesProps) {
             )}
 
             {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent transition-opacity group-hover:from-black/60" />
 
-            {/* Color accent bar */}
-            <div
-              className="absolute top-0 left-0 right-0 h-1 transition-all duration-300 group-hover:h-1.5"
-              style={{ backgroundColor: meta.color }}
-            />
-
-            {/* Category label */}
-            <div className="relative z-10 w-full p-4 text-center">
-              <span className="block text-sm font-semibold text-white tracking-wide drop-shadow-md">
+            {/* Category label — simple overlaid text */}
+            <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4">
+              <span className="text-xs sm:text-sm font-semibold text-white tracking-wide drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
                 {dict.categories[slug]}
               </span>
             </div>
