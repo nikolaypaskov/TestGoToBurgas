@@ -17,22 +17,22 @@ interface Highlight {
 
 const highlights: Record<string, Highlight[]> = {
   en: [
-    { title: "300+ Sunny Days", desc: "Year-round warmth on the Black Sea", href: "/weather", image: "/images/hero-burgas.jpg" },
-    { title: "35km Coastline", desc: "Golden beaches and coastal trails", href: "/explore/beaches", image: "/images/hero/beach-hero.jpg" },
-    { title: "10+ Beaches", desc: "From vibrant to secluded shores", href: "/explore/beaches", image: "/images/places/st-anastasia.jpg" },
-    { title: "2500+ Years of History", desc: "Ancient ruins, culture, and heritage", href: "/explore/landmarks", image: "/images/places/sea-casino.jpg" },
+    { title: "300+ Sunny Days", desc: "Year-round warmth on the Bulgarian Riviera", href: "/weather", image: "/images/hero-burgas.jpg" },
+    { title: "35km Coastline", desc: "Where the promenade never ends", href: "/explore/beaches", image: "/images/hero/beach-hero.jpg" },
+    { title: "10+ Beaches", desc: "From lively boardwalks to hidden coves", href: "/explore/beaches", image: "/images/places/st-anastasia.jpg" },
+    { title: "2500+ Years", desc: "Thracian gold, Roman baths, festival nights", href: "/explore/landmarks", image: "/images/places/sea-casino.jpg" },
   ],
   bg: [
-    { title: "300+ Слънчеви дни", desc: "Целогодишна топлина на Черно море", href: "/weather", image: "/images/hero-burgas.jpg" },
-    { title: "35км Крайбрежие", desc: "Златни плажове и крайбрежни пътеки", href: "/explore/beaches", image: "/images/hero/beach-hero.jpg" },
-    { title: "10+ Плажа", desc: "От оживени до усамотени брегове", href: "/explore/beaches", image: "/images/places/st-anastasia.jpg" },
-    { title: "2500+ Години история", desc: "Антични руини, култура и наследство", href: "/explore/landmarks", image: "/images/places/sea-casino.jpg" },
+    { title: "300+ Слънчеви дни", desc: "Целогодишна топлина на Българската Ривиера", href: "/weather", image: "/images/hero-burgas.jpg" },
+    { title: "35км Крайбрежие", desc: "Където алеята никога не свършва", href: "/explore/beaches", image: "/images/hero/beach-hero.jpg" },
+    { title: "10+ Плажа", desc: "От оживени кейове до скрити заливчета", href: "/explore/beaches", image: "/images/places/st-anastasia.jpg" },
+    { title: "2500+ Години", desc: "Тракийско злато, римски бани, фестивални нощи", href: "/explore/landmarks", image: "/images/places/sea-casino.jpg" },
   ],
   ru: [
-    { title: "300+ Солнечных дней", desc: "Круглогодичное тепло на Чёрном море", href: "/weather", image: "/images/hero-burgas.jpg" },
-    { title: "35км Побережье", desc: "Золотые пляжи и прибрежные тропы", href: "/explore/beaches", image: "/images/hero/beach-hero.jpg" },
-    { title: "10+ Пляжей", desc: "От оживлённых до уединённых берегов", href: "/explore/beaches", image: "/images/places/st-anastasia.jpg" },
-    { title: "2500+ Лет истории", desc: "Древние руины, культура и наследие", href: "/explore/landmarks", image: "/images/places/sea-casino.jpg" },
+    { title: "300+ Солнечных дней", desc: "Круглогодичное тепло Болгарской Ривьеры", href: "/weather", image: "/images/hero-burgas.jpg" },
+    { title: "35км Побережья", desc: "Где набережная никогда не заканчивается", href: "/explore/beaches", image: "/images/hero/beach-hero.jpg" },
+    { title: "10+ Пляжей", desc: "От оживлённых набережных до скрытых бухт", href: "/explore/beaches", image: "/images/places/st-anastasia.jpg" },
+    { title: "2500+ Лет", desc: "Фракийское золото, римские бани, ночи фестивалей", href: "/explore/landmarks", image: "/images/places/sea-casino.jpg" },
   ],
 };
 

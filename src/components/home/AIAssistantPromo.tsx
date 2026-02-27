@@ -10,19 +10,19 @@ const content = {
   en: {
     title: "Your Local Insider",
     subtitle:
-      "Ask anything about Burgas — beaches, restaurants, events, history, or travel tips. Like having a well-connected friend who knows every hidden corner of the coast.",
+      "Wondering where locals eat fresh mussels at sunset? Curious about a secret beach only fishermen know? Ask our AI guide — it knows Burgas like a native.",
     cta: "Start a Conversation",
   },
   bg: {
     title: "Вашият местен познавач",
     subtitle:
-      "Попитайте каквото и да е за Бургас — плажове, ресторанти, събития, история или съвети за пътуване. Сякаш имате приятел, който познава всяко скрито кътче на брега.",
+      "Питате се къде местните ядат пресни миди на залез? Любопитни за таен плаж, който само рибарите знаят? Попитайте нашия AI гид — познава Бургас като местен.",
     cta: "Започнете разговор",
   },
   ru: {
     title: "Ваш местный знаток",
     subtitle:
-      "Спросите что угодно о Бургасе — пляжи, рестораны, события, история или советы. Как будто у вас есть друг, знающий каждый уголок побережья.",
+      "Хотите узнать, где местные едят свежие мидии на закате? Интересует тайный пляж, известный только рыбакам? Спросите нашего AI-гида — он знает Бургас как местный.",
     cta: "Начать разговор",
   },
 };

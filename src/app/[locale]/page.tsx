@@ -12,8 +12,6 @@ import { AIAssistantPromo } from "@/components/home/AIAssistantPromo";
 import { DealsHighlight } from "@/components/home/DealsHighlight";
 import { MustSeePlaces } from "@/components/home/MustSeePlaces";
 import { Testimonials } from "@/components/home/Testimonials";
-import { TripPlannerCTA } from "@/components/home/TripPlannerCTA";
-import { AboutSection } from "@/components/home/AboutSection";
 import { NewsletterCTA } from "@/components/home/NewsletterCTA";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 
@@ -100,17 +98,7 @@ export default async function HomePage({ params }: Props) {
         <Testimonials locale={typedLocale} />
       </ScrollReveal>
 
-      {/* 10. Trip Planner — full-bleed inspirational CTA */}
-      <ScrollReveal>
-        <TripPlannerCTA locale={typedLocale} />
-      </ScrollReveal>
-
-      {/* 11. About — full-bleed photo with stats */}
-      <ScrollReveal>
-        <AboutSection locale={typedLocale} dict={dict} />
-      </ScrollReveal>
-
-      {/* 12. Newsletter — editorial CTA */}
+      {/* 10. Newsletter — editorial closing CTA */}
       <ScrollReveal>
         <NewsletterCTA locale={typedLocale} dict={dict} />
       </ScrollReveal>

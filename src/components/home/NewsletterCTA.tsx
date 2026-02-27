@@ -23,10 +23,10 @@ export function NewsletterCTA({ locale, dict }: NewsletterCTAProps) {
 
   const thankYou =
     locale === "bg"
-      ? "Благодарим ви! Очаквайте новини."
+      ? "Добре дошли на борда! Скоро ще чуете от нас."
       : locale === "ru"
-        ? "Спасибо! Ожидайте новостей."
-        : "Thank you! Stay tuned.";
+        ? "Добро пожаловать на борт! Скоро свяжемся с вами."
+        : "Welcome aboard! We'll be in touch soon.";
 
   return (
     <section className="relative py-16 sm:py-20 overflow-hidden">
